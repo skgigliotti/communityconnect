@@ -1,4 +1,5 @@
 import React from 'react';
+import { ButtonGroup } from "./ButtonGroup";
 
 class SortBar extends React.Component {
     handleClick = (e) => {

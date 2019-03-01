@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router';
 
+import { 
+    Badge, 
+    Button, 
+    Collapse, 
+    Nav, 
+    Navbar, 
+    NavbarBrand, 
+    NavbarToggler 
+} from "../Common";
+import { AdminModal } from "./";
+
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -40,17 +51,17 @@ class Header extends Component {
         this.modalToggle();
     };
 
-    btnColor = () => {
-        if (this.props.savedResource.length >= 1) {
-            return styles["header__saved-resources--blue"];
-        }
-    }
+    // btnColor = () => {
+    //     if (this.props.savedResource.length >= 1) {
+    //         return styles["header__saved-resources--blue"];
+    //     }
+    // }
 
     btnBadge = () => {
         const savedResources = this.props.savedResource;
         if (savedResources.length >= 1) {
             return (
-                <Badge variant="primary" className={styles["header__saved-resources--count"]}>{savedResources.length}</Badge>
+                <Badge>{savedResources.length}</Badge>
             );
         }
     }
@@ -62,31 +73,28 @@ class Header extends Component {
                     <NavbarBrand className="Logo" onClick={this.modalOpen}>
                         <h3>Community Connect</h3>
                     </NavbarBrand>
-                    <Route path='/admin' render={props =>
-                        <div id="navbar">
-                            <NavbarToggler onClick={this.toggleNavbar} />
-                            <Collapse isOpen={!this.state.collapsed} navbar>
-                                <Nav className="ml-auto" navbar>
-                                    <NavItem className={styles["header__saved-resources"]}>
+                    <Route path='/admin' render={() =>
+                            <>
+                                <NavbarToggler onClick={this.toggleNavbar} />
+                                <Collapse isOpen={!this.state.collapsed} navbar>
+                                    <Nav>
                                         <Button
                                             className={this.btnColor()}
                                             onClick={() => this.props.toggleSavedResourcesPane()}>
                                             Saved Resources {this.btnBadge()}
                                         </Button>
-                                    </NavItem>
-                                </Nav>
-                            </Collapse>
-                        </div>
-                    } />
+                                    </Nav>
+                                </Collapse>
+                            </>
+                        }
+                    />
                 </Navbar>
-                <Modal isOpen={this.state.modal} toggle={this.modalToggle} onClosed={this.toggle}>
-                    <ModalHeader>Alert</ModalHeader>
-                    <ModalBody>This action will clear all your saved resources. Do you want to proceed?</ModalBody>
-                    <ModalFooter>
-                        <Button color="primary" onClick={this.modalToggle}>Cancel</Button>{' '}
-                        <Button color="secondary" onClick={this.confirmationModalToggle}>Continue</Button>
-                    </ModalFooter>
-                </Modal>
+                <AdminModal
+                    isOpen={this.state.modal}
+                    toggle={this.modalToggle}
+                    onClosed={this.toggle}
+                    >
+                </AdminModal>
             </>
         );
     }

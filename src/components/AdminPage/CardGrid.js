@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Card from '../Common/Card';
+import OrganizationCard from '../Common/OrganizationCardCard';
 import SortBar from '../Common/SortBar.js';
 import SearchBar from '../Header/SearchBar';
 import { getDistance } from '../../utils/distance.js';
@@ -70,7 +70,7 @@ export class CardGrid extends Component {
                 />
                     {
                         sortedData.map((resource, index) => (
-                            <Card
+                            <OrganizationCard
                                 key={resource.id}
                                 index={resource.id}
                                 organization={resource}

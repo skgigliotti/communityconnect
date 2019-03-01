@@ -15,13 +15,13 @@ class SaveButton extends Component {
     handleClick = () => {
         this.props.saveItem();
         let classes = [
-            styles['cbutton--effect-radomir__after'],
-            styles['cbutton--effect-radomir__cbutton--click__after'],
-            styles['cbutton__after'],
+            // styles['cbutton--effect-radomir__after'],
+            // styles['cbutton--effect-radomir__cbutton--click__after'],
+            // styles['cbutton__after'],
         ];
 
         this.setState({
-            animateButtonInside: styles['animate-button-click'],
+            // animateButtonInside: styles['animate-button-click'],
             animateButtonOutside: classes,
         });
         setTimeout(() => {
@@ -35,33 +35,21 @@ class SaveButton extends Component {
     }
 
     buttonSign() {
-      if (this.props.saveExist)
-        return String.fromCharCode(0x2713)
-      else
-        return '+'
+        if (this.props.saveExist)
+            return String.fromCharCode(0x2713)
+        else
+            return '+'
     }
 
     render() {
         return (
             <span onClick={this.handleClick}>
-                <button
-                    className={[
-                        styles['cbutton--effect-radomir'],
-                        styles['cbutton'],
-                    ].join(' ')}
-                >
+                <button>
                     <span
                         title='Add item to Saved Resources'
                         aria-label='Add item to Saved Resources'
-                        className={[
-                            this.state.animateButtonInside,
-                            styles['save-item'],
-                        ].join(' ')}>
+                        >
                         { this.buttonSign() }
-                  </span>
-                    <span
-                        className={this.state.animateButtonOutside.join(' ')}
-                    >
                     </span>
                 </button>
             </span>
