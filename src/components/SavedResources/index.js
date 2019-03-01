@@ -5,5 +5,7 @@ import { SavedResourcesContainer } from "./SavedResourcesContainer";
 
 export {
     SavedResource,
-    
+    SavedResourceCard,
+    SavedResourcePanel,
+    SavedResourcesContainer,
 }
