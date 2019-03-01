@@ -7,7 +7,6 @@ import MapPage from '../components/MapPage/MapPage';
 import AdminPage from '../components/AdminPage/AdminPage';
 import { SplitScreenTogglePane } from '../components/SlidingPane/SplitScreenSlidingPane';
 import SavedResourcePanel from '../components/SavedResources/SavedResourcePanel';
-import styles from './App.module.css';
 import Loader from 'react-loader-spinner'
 
 
@@ -35,7 +34,6 @@ class AppContainer extends Component {
                 },
                 error => {
                 });
-        } else {
         }
     }
 
@@ -52,30 +50,30 @@ class AppContainer extends Component {
     render() {
         let { isFetchingResource } = this.props;
         return (
-            <div className="container-fluid">
-                <div className={styles.viewport}>
-                    <div className={styles.header}>
-                        <Header
-                            toggleSavedResourcesPane={this.toggleSavedResourcesPane}
-                        />
-                    </div>
-                    {isFetchingResource && <div className={styles.spinner}><Loader
-                        type="TailSpin"
-                        color="#00BFFF"
-                        height="50"
-                        width="50"
-                    />  </div>}
-                    {!isFetchingResource &&
-                        <div>
-                            <Route exact path='/admin' render={(props) => <AdminPage currentPosition={this.state.position} />} />
-                            <Route exact path='/' render={(props) => <MapPage currentPosition={this.state.position} />} />
-                            <SplitScreenTogglePane isOpen={this.state.isSavedResourcePaneOpen}>
-                                <SavedResourcePanel />
-                            </SplitScreenTogglePane>
-                        </div>
+            <>
+                <Header
+                    toggleSavedResourcesPane={this.toggleSavedResourcesPane}
+                />
+                    {
+                        isFetchingResource && 
+                            <Loader
+                                type="TailSpin"
+                                color="#00BFFF"
+                                height="50"
+                                width="50"
+                            />
                     }
-                </div>
-            </div>
+                    {
+                        !isFetchingResource &&
+                            <>
+                                <Route exact path='/admin' render={(props) => <AdminPage currentPosition={this.state.position} />} />
+                                <Route exact path='/' render={(props) => <MapPage currentPosition={this.state.position} />} />
+                                <SplitScreenTogglePane isOpen={this.state.isSavedResourcePaneOpen}>
+                                    <SavedResourcePanel />
+                                </SplitScreenTogglePane>
+                            </>
+                    }
+            </>
         );
     }
 }

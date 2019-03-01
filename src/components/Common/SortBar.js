@@ -1,6 +1,4 @@
 import React from 'react';
-import {ButtonGroup} from 'reactstrap';
-import styles from './SortBar.module.css';
 
 class SortBar extends React.Component {
     handleClick = (e) => {
@@ -11,23 +9,18 @@ class SortBar extends React.Component {
 
     render() {
         return (
-            <div>
-                <div className={styles.result}>
-                    <p>Sort By:</p>
-                </div>
-
-                <div className={styles.result}>
-                    <ButtonGroup>
-                        <select onChange={this.handleClick}>
-                            {this.props.sortOptions.map((sortOption, i) =>
-                                <option key={sortOption.key} value={i} disabled={sortOption.disabled}>
-                                    {sortOption.key}
-                                </option>
-                            )}
-                        </select>
-                    </ButtonGroup>
-                </div>
-            </div>
+            <>
+                <p>Sort By:</p>
+                <ButtonGroup>
+                    <select onChange={this.handleClick}>
+                        {this.props.sortOptions.map((sortOption, i) =>
+                            <option key={sortOption.key} value={i} disabled={sortOption.disabled}>
+                                {sortOption.key}
+                            </option>
+                        )}
+                    </select>
+                </ButtonGroup>
+            </>
         );
     }
 }

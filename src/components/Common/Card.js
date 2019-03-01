@@ -5,15 +5,10 @@ import {withRouter} from 'react-router';
 import qs from 'qs-lite';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {getDistance} from '../../utils/distance.js';
-import {Card, CardBody, CardSubtitle, CardFooter, CardHeader} from 'reactstrap';
 import * as resourceAction from '../../action/resourceDataAction';
 import SaveButton from './SaveButton';
 
-import styles from './OrganizationCard.module.css'
-
-
-class OrganizationCard extends Component {
-
+class Card extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -218,4 +213,4 @@ function mapDispatchToProps(dispatch) {
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
     withRouter,
-)(OrganizationCard);
+)(Card);

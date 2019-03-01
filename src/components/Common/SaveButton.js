@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styles from './OrganizationCard.module.css'
 
 class SaveButton extends Component {
     constructor(props) {
