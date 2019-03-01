@@ -7,6 +7,8 @@ import qs from 'qs-lite';
 import { getDistance } from '../../utils/distance.js';
 import * as resourceAction from '../../action/resourceDataAction';
 
+import { SavedResourceCard } from "../SavedResources";
+
 class SavedResource extends Component {
 
     constructor(props) {
