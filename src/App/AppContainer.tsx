@@ -9,12 +9,31 @@ import { SplitScreenTogglePane } from '../components/SlidingPane/SplitScreenTogg
 import { SavedResourcePanel } from '../components/SavedResources/SavedResourcePanel';
 import Loader from 'react-loader-spinner'
 
+type Props = {
+    isFetchingResource: boolean;
+};
 
-class AppContainer extends Component {
+type State = {
+    isSavedResourcePaneOpen: boolean;
+    position: {
+        coordinates: {
+            lat: number;
+            lng: number;
+        }
+    }
+};
+
+class AppContainer extends Component<Props, State> {
     constructor(props) {
         super(props);
         this.state = {
-            position: {}
+            isSavedResourcePaneOpen: false,
+            position: {
+                coordinates: {
+                    lat: 0,
+                    lng: 0
+                }
+            }
         }
         this.toggleSavedResourcesPane = this.toggleSavedResourcesPane.bind(this);
     }
@@ -26,8 +45,8 @@ class AppContainer extends Component {
                     this.setState({
                         position: {
                             coordinates: {
-                                lat: parseFloat(position.coords.latitude),
-                                lng: parseFloat(position.coords.longitude)
+                                lat: parseFloat(position.coords.latitude.toString()),
+                                lng: parseFloat(position.coords.longitude.toString())
                             }
                         }
                     })

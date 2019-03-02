@@ -11,9 +11,20 @@ import {
     NavbarBrand, 
     NavbarToggler 
 } from "../../community-connect-ui/Common";
-import { AdminModal } from "../Header";
+import { AdminModal } from ".";
 
-class HeaderClass extends Component {
+type Props = {
+    savedResource: {
+        length: number;
+    },
+};
+
+type State = {
+    collapsed: boolean;
+    modal: boolean;
+};
+
+class HeaderClass extends Component<Props, State> {
     constructor(props) {
         super(props);
 
