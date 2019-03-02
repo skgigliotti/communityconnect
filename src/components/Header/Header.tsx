@@ -102,9 +102,7 @@ class HeaderClass extends Component<Props, State> {
                 <AdminModal
                     isOpen={this.state.modal}
                     toggle={this.modalToggle}
-                    onClosed={this.toggle}
-                    >
-                </AdminModal>
+                />
             </>
         );
     }

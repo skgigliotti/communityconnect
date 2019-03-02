@@ -38,8 +38,13 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.7.2",
+    "@types/react": "^16.8.6",
+    "@types/react-dom": "^16.8.2",
+    "@types/react-redux": "^7.0.1",
+    "@types/react-router-dom": "^4.3.1",
     "react-scripts": "2.0.0-next.66cc7a90",
-    "redux-immutable-state-invariant": "^2.1.0"
+    "redux-immutable-state-invariant": "^2.1.0",
+    "typescript": "^3.3.3333"
   },
   "browserslist": {
     "development": [

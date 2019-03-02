@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Modal } from "../../community-connect-ui/Common";
 
-export const HeaderModal = ({ modalToggle, confirmationModalToggle }) => (
+export const AdminModal = ({ modalToggle, confirmationModalToggle }) => (
     <Modal>
         <h1>Alert</h1>
         <h2>This action will clear all your saved resources. Do you want to proceed?</h2>
