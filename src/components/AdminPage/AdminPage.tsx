@@ -1,13 +1,16 @@
 import React from 'react';
 
-import CategoryList from './CategoryList';
-import CardGrid from './CardGrid';
+import { CardGrid, CategoryList } from "../AdminPage";
 
-const AdminPage = ({currentPosition}) => (
+type Props = {
+    currentPosition: string;
+};
+
+const AdminPage: React.FC<Props> = ({ currentPosition }) => (
     <>
         <CategoryList/>
         <CardGrid
-            currentPos={currentPosition}
+            currentPosition={currentPosition}
         />
     </>
 )

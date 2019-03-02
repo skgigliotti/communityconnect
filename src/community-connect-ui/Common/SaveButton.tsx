@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 
-export class SaveButton extends Component {
-    constructor(props) {
+type Props = {
+    saveItem: () => void;
+    saveExist: boolean;
+};
+
+type State = {
+    animateButtonInside: any;
+    animateButtonOutside: any;
+}
+export class SaveButton extends Component<Props, State> {
+    constructor(props: Props) {
         super(props)
         this.state = {
             animateButtonInside: '',
@@ -9,21 +18,21 @@ export class SaveButton extends Component {
         };
         this.buttonSign = this.buttonSign.bind(this);
 
-        this.cardRef = React.createRef();
+        // this.cardRef = React.createRef();
     }
 
     handleClick = () => {
         this.props.saveItem();
-        let classes = [
-            // styles['cbutton--effect-radomir__after'],
-            // styles['cbutton--effect-radomir__cbutton--click__after'],
-            // styles['cbutton__after'],
-        ];
+        // let classes = [
+        //     // styles['cbutton--effect-radomir__after'],
+        //     // styles['cbutton--effect-radomir__cbutton--click__after'],
+        //     // styles['cbutton__after'],
+        // ];
 
-        this.setState({
-            // animateButtonInside: styles['animate-button-click'],
-            animateButtonOutside: classes,
-        });
+        // this.setState({
+        //     // animateButtonInside: styles['animate-button-click'],
+        //     animateButtonOutside: classes,
+        // });
         setTimeout(() => {
             this.setState({
                 animateButtonInside: '',

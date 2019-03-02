@@ -5,10 +5,12 @@ import SearchBar from '../Header/SearchBar';
 import { getDistance } from '../../utils';
 
 type Props = {
-    currentPosition: number;
-    resource: string[];
-    saveItem: (resource) => void;
-    handleFilter: () => void;
+    currentPosition: string;
+    resource?: {
+        id: string
+    }[];
+    saveItem?: (resource: any) => void;
+    handleFilter?: () => void;
 };
 
 type State = {
@@ -16,7 +18,7 @@ type State = {
 };
 
 export class CardGrid extends Component<Props, State> {
-    constructor(props) {
+    constructor(props: Props) {
         super(props)
 
         this.state = {
@@ -24,8 +26,8 @@ export class CardGrid extends Component<Props, State> {
         }
     }
 
-    getCloserResource = (a, b): number => {
-        if (getDistance(a, this.props.currentPosition)
+    getCloserResource = (a: string, b: string): number => {
+        if (a && getDistance(a, this.props.currentPosition)
             > getDistance(b, this.props.currentPosition)) {
             return 1;
         }
@@ -33,18 +35,18 @@ export class CardGrid extends Component<Props, State> {
         return -1;
     }
 
-    getCloserName = (a, b): number => {
+    getCloserName = (a: { name: string }, b: { name: string }): number => {
         if (a.name > b.name) return 1
         else if (a.name < b.name) return -1
         else return 0
     }
 
     sortByAlphabet = () => {
-        return this.props.resource.slice().sort(this.getCloserName);
+        return this.props.resource && this.props.resource.slice().sort(this.getCloserName);
     }
 
     sortByDistance = () => {
-        return this.props.resource.slice().sort(this.getCloserResource);
+        return this.props.resource && this.props.resource.slice().sort(this.getCloserResource);
     }
 
     handleSortChange = (newSort: () => void) => {
@@ -94,7 +96,7 @@ export class CardGrid extends Component<Props, State> {
     }
 };
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state: any, ownProps: any) {
     let res = [];
     //Not the most efficient logic, but it works. Will have to optimize this later
     for (let i = 0, len1 = state.searchedResource.length; i < len1; i++) {

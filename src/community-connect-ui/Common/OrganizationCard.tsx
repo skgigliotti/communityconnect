@@ -10,10 +10,35 @@ import * as resourceAction from '../../action/resourceDataAction';
 import { Card, SaveButton } from "../Common";
 
 type Props = {
-    cardClick: (id: number) => void;
+    index: string;
+    cardClick: (id: string) => void;
     organization: {
         id: number;
+        name: string; 
+        categoryautosortscript: any;
+        overview: any;
+        location: any;
+        website: string; 
+        facebookUrl: string;
+        instagramUrl: string; 
+        twitterUrl: string;
+        phone: string; 
+        latitude: string; 
+        longitude: string;
+        coordinates: string;
     }
+    savedResource: any;
+    actions: any;
+    saveable: boolean;
+    history: {
+        pathname: string;
+        search: string;
+        push: (params: { 
+            pathname: string; 
+            search: string;
+        }) => void;
+    }
+    currentPosition: string;
 };
 
 type State = {
@@ -26,18 +51,18 @@ class OrganizationCardClass extends Component<Props, State> {
         this.state = {
             saveExist: false
         }
-        console.log(this.state.saveExist)
+        // console.log(this.state.saveExist)
     }
-    static getDerivedStateFromProps(props){
-        if(!props.savedResource.some(r => r.id === props.organization.id)){
-            return{saveExist:false}
+    static getDerivedStateFromProps(props: Props){
+        if(!props.savedResource.some((resource: any) => resource.id === props.organization.id)){
+            return { saveExist: false }
         }
         else{
-            return{saveExist:true}
+            return { saveExist: true }
         }
     }
-    cardClick = (e) => {
-        if (this.props.cardClick) {
+    cardClick = (e: React.MouseEvent) => {
+        if (this.props.cardClick && e.currentTarget && e.currentTarget.id) {
             this.props.cardClick(e.currentTarget.id);
         }
     }
@@ -74,12 +99,12 @@ class OrganizationCardClass extends Component<Props, State> {
     }
 
     // Takes a ref to the links that change color when hovered over.
-    changeColor(link) {
+    changeColor(link: any) {
         console.log(link);
-        return link.childNodes[0].classList.toggle('text-black-50');
+        return link && link.childNodes[0].classList.toggle('text-black-50');
     }
 
-    validatedUrl(website) {
+    validatedUrl(website: string) {
         if (website === "")
             return website;
 
@@ -98,19 +123,32 @@ class OrganizationCardClass extends Component<Props, State> {
 
     render() {
         const {
-            name, categoryautosortscript, overview, location, website, facebookUrl,
-            instagramUrl, twitterUrl, phone, latitude, longitude
+            name, 
+            categoryautosortscript, 
+            overview, 
+            location, 
+            website, 
+            facebookUrl,
+            instagramUrl, 
+            twitterUrl, 
+            phone, 
+            latitude, 
+            longitude
         } = this.props.organization;
         let distance, distanceElement, directionUrl, encodedCoordinates;
         let url = this.validatedUrl(website);
-        if (this.props.currentPos && this.props.organization.coordinates) {
-            distance = getDistance({coordinates: this.props.organization.coordinates}, this.props.currentPos);
+        if (this.props.currentPosition && this.props.organization.coordinates) {
+            distance = getDistance({coordinates: this.props.organization.coordinates}, this.props.currentPosition);
             if (distance) {
                 distanceElement = <p>Distance from your Location: {distance} miles</p>
             }
         }
         // vars to hold refs to social icons and external link to the website
-        let socialFb, socialIg, socialTw, link, mapUrl;
+        let socialFb: HTMLAnchorElement | null, 
+            socialIg: HTMLAnchorElement | null, 
+            socialTw: HTMLAnchorElement | null, 
+            link: HTMLAnchorElement | null, 
+            mapUrl: HTMLAnchorElement | null;
 
         encodedCoordinates = encodeURIComponent(latitude + "," + longitude);
         directionUrl = "https://www.google.com/maps?saddr=My+Location&daddr=" +
@@ -139,7 +177,7 @@ class OrganizationCardClass extends Component<Props, State> {
                         <div className='col-sm-6'>
                             <a href={directionUrl}
                                 target="_blank"
-                                ref={node => {mapUrl = node}}
+                                ref={node => mapUrl = node}
                                 onMouseEnter={() => {this.changeColor(mapUrl)}}
                                 onMouseLeave={() => {this.changeColor(mapUrl)}}>
                                     <FontAwesomeIcon icon="map-marked-alt" className="text-black-50 mr-1"/>
@@ -171,42 +209,44 @@ class OrganizationCardClass extends Component<Props, State> {
                 {
                     (facebookUrl || instagramUrl || twitterUrl) &&
                         <>
-                            {facebookUrl &&
-                            <a className="list-group-item border-0 m-0 p-1 bg-light" href={facebookUrl}
-                                data-type="social" ref={node => {
-                                socialFb = node
-                            }} onMouseEnter={() => {
-                                this.changeColor(socialFb)
-                            }} onMouseLeave={() => {
-                                this.changeColor(socialFb)
-                            }} alt="Facebook Page">
-                                <FontAwesomeIcon icon={['fab', 'facebook-square']}
-                                                className="text-black-50 mr-1" size='2x' title="Facebook Page"/>
-                            </a>}
-                            {instagramUrl &&
-                            <a className="list-group-item border-0 m-0 p-1 bg-light" href={instagramUrl}
-                                data-type="social" ref={node => {
-                                socialIg = node
-                            }} onMouseEnter={() => {
-                                this.changeColor(socialIg)
-                            }} onMouseLeave={() => {
-                                this.changeColor(socialIg)
-                            }}>
-                                <FontAwesomeIcon icon={['fab', 'instagram']} className="text-black-50 mr-1" size='2x'
-                                                title="Instagram Page"/>
-                            </a>}
-                            {twitterUrl &&
-                            <a className="list-group-item border-0 m-0 p-1 bg-light" href={twitterUrl}
-                                data-type="social" ref={node => {
-                                socialTw = node
-                            }} onMouseEnter={() => {
-                                this.changeColor(socialTw)
-                            }} onMouseLeave={() => {
-                                this.changeColor(socialTw)
-                            }} aria-label="Twitter Page">
-                                <FontAwesomeIcon icon={['fab', 'twitter']} className="text-black-50 mr-1" size='2x'
-                                                title="Twitter Page"/>
-                            </a>}
+                            {
+                                facebookUrl &&
+                                    <a href={facebookUrl}
+                                        data-type="social" 
+                                        ref={node => socialFb = node}
+                                        onMouseEnter={() => this.changeColor(socialFb)} 
+                                        onMouseLeave={() => this.changeColor(socialFb)}
+                                    >
+                                        <FontAwesomeIcon icon={['fab', 'facebook-square']} title="Facebook Page"/>
+                                    </a>
+                            }
+                            {
+                                instagramUrl &&
+                                    <a href={instagramUrl}
+                                        data-type="social"
+                                        ref={ node => socialIg = node }
+                                        onMouseEnter={() => this.changeColor(socialIg)}
+                                        onMouseLeave={() => this.changeColor(socialIg)}
+                                    >
+                                        <FontAwesomeIcon
+                                            icon={['fab', 'instagram']}
+                                            size='2x'
+                                            title="Instagram Page"/>
+                                    </a>
+                            }
+                            {
+                                twitterUrl &&
+                                    <a href={twitterUrl}
+                                        data-type="social"
+                                        ref={node => socialTw = node}
+                                        onMouseEnter={() => this.changeColor(socialTw)}
+                                        onMouseLeave={() => this.changeColor(socialTw)}
+                                        aria-label="Twitter Page"
+                                    >
+                                        <FontAwesomeIcon icon={['fab', 'twitter']} size='2x'
+                                                        title="Twitter Page"/>
+                                    </a>
+                            }
                         </>
                 }
             </Card>
@@ -214,13 +254,13 @@ class OrganizationCardClass extends Component<Props, State> {
     }
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state: any, ownProps: any) {
     return {
         savedResource: state.savedResource
     }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: any) {
     return {
         actions: bindActionCreators(resourceAction, dispatch)
     };
