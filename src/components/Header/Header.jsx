@@ -10,10 +10,10 @@ import {
     Navbar, 
     NavbarBrand, 
     NavbarToggler 
-} from "../Common";
-import { AdminModal } from ".";
+} from "../../community-connect-ui/Common";
+import { AdminModal } from "../Header";
 
-class Header extends Component {
+class HeaderClass extends Component {
     constructor(props) {
         super(props);
 
@@ -51,13 +51,13 @@ class Header extends Component {
         this.modalToggle();
     };
 
-    // btnColor = () => {
+    // setButtonColor = () => {
     //     if (this.props.savedResource.length >= 1) {
     //         return styles["header__saved-resources--blue"];
     //     }
     // }
 
-    btnBadge = () => {
+    buttonBadge = () => {
         const savedResources = this.props.savedResource;
         if (savedResources.length >= 1) {
             return (
@@ -79,9 +79,8 @@ class Header extends Component {
                                 <Collapse isOpen={!this.state.collapsed} navbar>
                                     <Nav>
                                         <Button
-                                            className={this.btnColor()}
                                             onClick={() => this.props.toggleSavedResourcesPane()}>
-                                            Saved Resources {this.btnBadge()}
+                                            Saved Resources {this.buttonBadge()}
                                         </Button>
                                     </Nav>
                                 </Collapse>
@@ -106,4 +105,4 @@ function mapStateToProps(state, ownProps) {
     }
 }
 
-export default connect(mapStateToProps)(Header);
+export const Header = connect(mapStateToProps)(HeaderClass);

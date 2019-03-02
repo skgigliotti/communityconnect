@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Modal } from "../Common";
+import { Button, Modal } from "../../community-connect-ui/Common";
 
 export const HeaderModal = ({ modalToggle, confirmationModalToggle }) => (
     <Modal>

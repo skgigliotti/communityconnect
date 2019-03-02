@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Card } from "../Common";
+import { Card } from "../../community-connect-ui/Common";
 
 const StyledSavedResourceCard = styled(Card)`
 

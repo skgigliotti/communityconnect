@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import * as resourceAction from '../../action/resourceDataAction';
 
-import { Form, FormGroup, Input, Label } from "../Common";
+import { Form, FormGroup, Input, Label } from "../../community-connect-ui/Common";
 
 export class CategoryList extends Component {
 

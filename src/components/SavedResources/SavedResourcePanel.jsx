@@ -4,7 +4,7 @@ import qs from 'qs-lite';
 import { Link, Route } from "react-router-dom";
 import shareIcon from '../../share-symbol.svg';
 import SavedResources from './SavedResourcesContainer';
-import { Button, Card } from "../Common";
+import { Button, Card } from "../../community-connect-ui/Common";
 
 /*
 const ToHomeButton = () => {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { OrganizationCard, SortBar } from "../../Common";
+import { OrganizationCard, SortBar } from "../../../community-connect-ui/Common";
 import { getDistance } from '../../../utils/distance.js';
 import * as resourceAction from '../../../action/resourceDataAction';
 
