@@ -80,14 +80,14 @@ class HeaderClass extends Component<Props, State> {
     render() {
         return (
             <>
-                <Navbar color="light" light expand="md">
-                    <NavbarBrand className="Logo" onClick={this.modalOpen}>
+                <Navbar>
+                    <NavbarBrand onClick={this.modalOpen}>
                         <h3>Community Connect</h3>
                     </NavbarBrand>
                     <Route path='/admin' render={() =>
                             <>
                                 <NavbarToggler onClick={this.toggleNavbar} />
-                                <Collapse isOpen={!this.state.collapsed} navbar>
+                                <Collapse isOpen={!this.state.collapsed}>
                                     <Nav>
                                         <Button
                                             onClick={() => this.props.toggleSavedResourcesPane()}>

@@ -8,7 +8,6 @@ import AppContainer from './AppContainer'
 import {Route, Switch} from 'react-router';
 import NotFoundPage from '../components/NotFoundPage/NotFoundPage';
 
-
 library.add(fab, fas);
 const App = () => (
   <div>
