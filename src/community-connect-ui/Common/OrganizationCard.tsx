@@ -9,7 +9,7 @@ import {getDistance} from '../../utils';
 import * as resourceAction from '../../action/resourceDataAction';
 
 
-import { Card, SaveButton } from "../Common";
+import { Card, SaveButton } from "../common";
 
 type Props = {
     index: string;
