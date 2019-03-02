@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "@emotion/styled";
 import qs from 'qs-lite';
-import { Link, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import shareIcon from '../../share-symbol.svg';
 import { SavedResourcesContainer } from '../SavedResources';
 import { Button, Card } from "../../community-connect-ui/Common";
@@ -23,16 +23,16 @@ const ToMapButton = () => {
 }*/
 
 const ToShareButton = () => {
-    // const query = qs.parse(window.location.search.replace('?', ''));
-    // let resources = [];
-    // let tempUrl = "";
-    // if (query.resources) {
-    //     resources = query.resources.split(',');
-    //     tempUrl = `/?resources=${resources.join(',')}`
-    // }
+    const query = qs.parse(window.location.search.replace('?', ''));
+    let resources = [];
+    let tempUrl = "";
+    if (query.resources) {
+        resources = query.resources.split(',');
+        tempUrl = `/?resources=${resources.join(',')}`
+    }
 
     return (
-        <Button href={Link} target="_blank">
+        <Button href={tempUrl} target="_blank">
             <img src={shareIcon} alt="" />
         </Button>
     )

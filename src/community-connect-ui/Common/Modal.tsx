@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Button } from ".";
 
 type StyledModalProps = {
     isOpen: boolean;
@@ -8,9 +7,6 @@ type StyledModalProps = {
 
 const StyledModal = styled("div")<StyledModalProps>`
     display: ${props => props.isOpen === true ? "grid" : "none"};
-`;
-
-const Footer = styled("div")`
 `;
 
 type Props = {

@@ -5,7 +5,7 @@ import { withRouter } from 'react-router';
 
 import qs from 'qs-lite';
 import { History, Resource } from "community-connect";
-import { getDistance } from '../../utils';
+// import { getDistance } from '../../utils';
 import * as resourceAction from '../../action/resourceDataAction';
 
 import { SavedResourceCard, SavedResourceModal } from "../SavedResources";
@@ -68,14 +68,14 @@ class SavedResourceClass extends Component<Props, State> {
 
     render() {
         const { name } = this.props.organization;
-        let distance;
-        if (this.props.currentPosition && this.props.currentPosition.coordinates) {
-            distance = getDistance(this.props.organization.coordinates, this.props.currentPosition);
-            // where does this get used?
-            // if (distance) {
-            //     distanceElement = <p>Distance from your Location: {distance.toPrecision(4)} miles</p>
-            // }
-        }
+        // let distance;
+        // if (this.props.currentPosition && this.props.currentPosition.coordinates) {
+        //     distance = getDistance(this.props.organization.coordinates, this.props.currentPosition);
+        //     // where does this get used?
+        //     // if (distance) {
+        //     //     distanceElement = <p>Distance from your Location: {distance.toPrecision(4)} miles</p>
+        //     // }
+        // }
 
         return (
             <>

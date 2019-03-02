@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import PropTypes from 'prop-types';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { SavedResource } from '../SavedResources';
 
@@ -42,7 +41,7 @@ class SavedResourcesContainerClass extends Component<Props, State> {
     }
 
     //Using deprecated function necessary to update data with store's data
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps: Props) {
         this.setState({ data: Object.assign([], nextProps.data) });
     }
     onDragEnd(result) {
@@ -116,7 +115,7 @@ class SavedResourcesContainerClass extends Component<Props, State> {
     }
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state: any, ownProps: any) {
     return {
         data: state.savedResource
     }

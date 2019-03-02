@@ -25,7 +25,7 @@ export function isFetchingResource(state = initialState.isFetchingResource, acti
 export function categories(state = initialState.categories, action: any) {
     switch (action.type) {
         case types.LOAD_RESOURCE_DATA_SUCCESS:
-            const categories = {};
+            const categories: any = {};
             for (let data of action.resource) {
                 let category = data.categoryAutoSortScript.split(',');
                 category.forEach((cat: any) => categories[cat] = cat.trim());
@@ -75,7 +75,7 @@ export function savedResource(state = initialState.savedResource, action: any) {
             }
 
             const selectedResources: any[] = [];
-            selectedResourceIds.forEach(selectedResourceId => {
+            selectedResourceIds.forEach((selectedResourceId: any) => {
                 action.resource.forEach((resource: { id: string }) => {
                     if (resource.id === selectedResourceId) {
                     selectedResources.push(resource);

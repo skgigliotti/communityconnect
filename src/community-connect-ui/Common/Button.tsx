@@ -10,9 +10,11 @@ type Props = {
     children: any;
     onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
     href?: string | Link;
-}
-export const Button: React.FC<Props> = ({ children, href, onClick }) => (
-    <StyledButton>
+    target?: any;
+};
+
+export const Button: React.FC<Props> = ({ children, href, onClick, target }) => (
+    <StyledButton href={href} onClick={onClick}>
         { children }
     </StyledButton>
 );
