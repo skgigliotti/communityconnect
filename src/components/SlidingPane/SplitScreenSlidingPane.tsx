@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from "@emotion/styled";
-import { Button } from "../../community-connect-ui/Common";
+import { Button } from "../../community-connect-ui/common";
 
 type StyledProps = {
     display: boolean;

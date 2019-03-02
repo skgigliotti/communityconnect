@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { Organization } from "community-connect";
-import { Card } from "../../community-connect-ui/Common";
+import { Card } from "../../community-connect-ui/common";
 
 const StyledSavedResourceCard = styled(Card)`
 

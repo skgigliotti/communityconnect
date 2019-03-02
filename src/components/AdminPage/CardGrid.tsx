@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Coordinates } from "community-connect";
-import { OrganizationCard, SortBar } from "../../community-connect-ui/Common";
+import { OrganizationCard, SortBar } from "../../community-connect-ui/common";
 import SearchBar from '../Header/SearchBar';
 import { getCloserName, getCloserResource } from '../../utils';
 

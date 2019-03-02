@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import * as resourceAction from '../../action/resourceDataAction';
 
-import { Form, FormGroup, Input, Label } from "../../community-connect-ui/Common";
+import { Form, FormGroup, Input, Label } from "../../community-connect-ui/common";
 
 type Props = {
     resource: any;

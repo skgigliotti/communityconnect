@@ -10,7 +10,7 @@ import {
     Navbar, 
     NavbarBrand, 
     NavbarToggler 
-} from "../../community-connect-ui/Common";
+} from "../../community-connect-ui/common";
 import { AdminModal } from ".";
 
 type Props = {

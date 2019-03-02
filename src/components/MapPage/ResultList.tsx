@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Coordinates } from "community-connect";
-import { OrganizationCard, SortBar } from "../../community-connect-ui/Common";
+import { OrganizationCard, SortBar } from "../../community-connect-ui/common";
 import { getCloserName, getCloserResource } from '../../utils';
 import * as resourceAction from '../../action/resourceDataAction';
 

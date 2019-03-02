@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Modal } from "../../community-connect-ui/Common";
+import { Button, Modal } from "../../community-connect-ui/common";
 
 export const AdminModal = ({ modalToggle, confirmationModalToggle }) => (
     <Modal>

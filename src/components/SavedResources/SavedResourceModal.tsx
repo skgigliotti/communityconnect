@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Button, Modal } from "../../community-connect-ui/Common";
+import { Button, Modal } from "../../community-connect-ui/common";
 
 const StyledSavedResourceModal = styled(Modal)`
 
