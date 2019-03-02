@@ -9,13 +9,14 @@ import { getDistance } from '../../utils';
 import * as resourceAction from '../../action/resourceDataAction';
 
 import { SavedResourceCard, SavedResourceModal } from "../SavedResources";
-import { Organization } from "community-connect";
+import { CurrentPosition, Organization } from "community-connect";
 
 type Props = {
     organization: Organization;
     savedResource: any;
     actions: any;
     history: History;
+    currentPosition: CurrentPosition;
 };
 
 type State = {
@@ -80,7 +81,7 @@ class SavedResourceClass extends Component<Props, State> {
         } = this.props.organization;
 
         let distance, distanceElement;
-        if (this.props.currentPos && this.props.currentPos.coordinates) {
+        if (this.props.currentPosition && this.props.currentPos.coordinates) {
             distance = getDistance(
                 { coordinates: this.props.organization.coordinates },
                 this.props.currentPos);

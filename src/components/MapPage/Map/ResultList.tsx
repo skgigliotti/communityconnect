@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
+import { CurrentPosition } from "community-connect";
 import { OrganizationCard, SortBar } from "../../../community-connect-ui/Common";
 import { getDistance } from '../../../utils';
 import * as resourceAction from '../../../action/resourceDataAction';
 
-export class ResultList extends Component {
+type Props = {
+    currentPosition: CurrentPosition;
+    savedResource: any;
+}
+export class ResultList extends Component<Props> {
 
-    constructor(props) {
+    constructor(props: Props) {
         super(props)
 
         this.state = {
@@ -22,20 +26,20 @@ export class ResultList extends Component {
         this.listRef = React.createRef()
     }
 
-    scrollToElement = (index) => {
+    scrollToElement = (index: any) => {
         this.refs[parseInt(index) + 1].getRef()
     }
 
-    getCloserResource = (a, b) => {
-        if (getDistance(a, this.props.currentPos)
-            > getDistance(b, this.props.currentPos)) {
+    getCloserResource = (a: any, b: any) => {
+        if (getDistance({ a, this.props.currentPosition })
+            > getDistance({ b, this.props.currentPosition })) {
             return 1;
         }
 
         return -1;
     }
 
-    getCloserName = (a, b) => {
+    getCloserName = (a: { name: string }, b: { name: string }) => {
         if (a.name > b.name) return 1
         else if (a.name < b.name) return -1
         else return 0
@@ -58,13 +62,13 @@ export class ResultList extends Component {
             })
     }
 
-    cardClick = (id) => {
+    cardClick = (id: any) => {
         this.props.savedResource.findIndex(resource => {
             return resource.id === id;
         })
 
     }
-    saveResource = (resource) => {
+    saveResource = (resource: any) => {
         if (!this.props.savedResource.some(r => r.id === resource.id)) {
             this.props.actions.addSavedResource(this.props.savedResource.slice())
         }

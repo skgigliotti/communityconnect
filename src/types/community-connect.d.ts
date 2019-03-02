@@ -1,4 +1,18 @@
 declare module "community-connect" {
+    type CurrentPosition = {
+        coordinates: {
+            lat: string;
+            lng: string;
+        }
+    }
+    type History = {
+        pathname: string;
+        search: string;
+        push: (params: { 
+            pathname: string; 
+            search: string;
+        }) => void;
+    }
     type Organization = {
         id: number;
         name: string; 
@@ -13,19 +27,8 @@ declare module "community-connect" {
         latitude: string; 
         longitude: string;
         coordinates: string;
-    }
-    type History = {
-        pathname: string;
-        search: string;
-        push: (params: { 
-            pathname: string; 
-            search: string;
-        }) => void;
-    }
-    type CurrentPosition = {
-        coordinates: {
-            lat: string;
-            lng: string;
-        }
+        distance: string;
+        distanceElement: string;
+        removeItem: () => void;
     }
 }
