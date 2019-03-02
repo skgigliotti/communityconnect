@@ -23,17 +23,16 @@ const ToMapButton = () => {
 }*/
 
 const ToShareButton = () => {
-    const query = qs.parse(window.location.search.replace('?', ''));
-    let resources = [];
-    let tempUrl = "";
-    if (query.resources) {
-        resources = query.resources.split(',');
-        tempUrl = `/?resources=${resources.join(',')}`
-    }
+    // const query = qs.parse(window.location.search.replace('?', ''));
+    // let resources = [];
+    // let tempUrl = "";
+    // if (query.resources) {
+    //     resources = query.resources.split(',');
+    //     tempUrl = `/?resources=${resources.join(',')}`
+    // }
 
     return (
-        <Button
-            tag={Link} type="Map" to={tempUrl} target="_blank">
+        <Button href={Link} target="_blank">
             <img src={shareIcon} alt="" />
         </Button>
     )

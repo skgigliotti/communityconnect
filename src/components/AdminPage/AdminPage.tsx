@@ -1,19 +1,24 @@
 import React from 'react';
-import { CurrentPosition } from "community-connect";
+import { Coordinates } from "community-connect";
 
 import { CardGrid, CategoryList } from "../AdminPage";
 
 type Props = {
-    currentPosition: CurrentPosition
+    currentPosition: Coordinates
+    resource?: any;
+    actions?: any;
+    categories?: any;
 };
 
-const AdminPage: React.FC<Props> = ({ currentPosition }) => (
+export const AdminPage: React.FC<Props> = ({ currentPosition, resource, actions, categories }) => (
     <>
-        <CategoryList/>
+        <CategoryList
+            resource={resource}
+            actions={actions}
+            categories={categories}
+        />
         <CardGrid
             currentPosition={currentPosition}
         />
     </>
 )
-
-export default AdminPage;

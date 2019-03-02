@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { CurrentPosition } from "community-connect";
+import { Coordinates } from "community-connect";
 import { OrganizationCard, SortBar } from "../../community-connect-ui/Common";
 import SearchBar from '../Header/SearchBar';
-import { getDistance } from '../../utils';
+import { getCloserName, getCloserResource } from '../../utils';
 
 type Props = {
-    currentPosition: CurrentPosition;
+    currentPosition: Coordinates;
     resource?: {
         id: string
     }[];
@@ -27,41 +27,34 @@ export class CardGrid extends Component<Props, State> {
         }
     }
 
-    getCloserResource = (a: string, b: string): number => {
-        if (a && getDistance(a, this.props.currentPosition)
-            > getDistance(b, this.props.currentPosition)) {
-            return 1;
-        }
-
-        return -1;
-    }
-
-    getCloserName = (a: { name: string }, b: { name: string }): number => {
-        if (a.name > b.name) return 1
-        else if (a.name < b.name) return -1
-        else return 0
-    }
-
     sortByAlphabet = () => {
-        return this.props.resource && this.props.resource.slice().sort(this.getCloserName);
+        return this.props.resource && this.props.resource.slice().sort(getCloserName);
     }
 
     sortByDistance = () => {
-        return this.props.resource && this.props.resource.slice().sort(this.getCloserResource);
+        return this.props.resource && this.props.resource.slice().sort(getCloserResource);
     }
 
-    handleSortChange = (newSort: () => void) => {
+    handleSortChange = (newSort: any) => {
         if (this.state.dataSort !== newSort)
+            // Set the dataSort variable to whichever sort function is chosen
             this.setState({
-                // Set the dataSort variable to whichever sort function is chosen
-                dataSort: newSort,
+                dataSort: newSort
             });
     }
 
     render() {
         const sortOptions = [
-            { key: 'Alphabetically', sort: this.sortByAlphabet, disabled: false }
-            , { key: 'Distance', sort: this.sortByDistance, disabled: !this.props.currentPosition }
+            { 
+                key: 'Alphabetically', 
+                sort: this.sortByAlphabet, 
+                disabled: false 
+            }, 
+            { 
+                key: 'Distance', 
+                sort: this.sortByDistance, 
+                disabled: !this.props.currentPosition 
+            }
         ];
 
         // Render will be called every time this.props.data is updated, and every time handleSortChange

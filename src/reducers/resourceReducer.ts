@@ -4,7 +4,7 @@ import * as types from '../action/actionType';
 import initialState from './initialState';
 
 
-export function resource(state = initialState.resource, action) {
+export function resource(state = initialState.resource, action: any) {
     switch (action.type) {
         case types.LOAD_RESOURCE_DATA_SUCCESS:
             return Object.assign([], state, action.resource);
@@ -12,7 +12,7 @@ export function resource(state = initialState.resource, action) {
     }
 }
 
-export function isFetchingResource(state = initialState.isFetchingResource, action) {
+export function isFetchingResource(state = initialState.isFetchingResource, action: any) {
     switch (action.type) {
         case types.LOAD_RESOURCE_DATA_START:
             return true;
@@ -22,13 +22,13 @@ export function isFetchingResource(state = initialState.isFetchingResource, acti
     }
 }
 
-export function categories(state = initialState.categories, action) {
+export function categories(state = initialState.categories, action: any) {
     switch (action.type) {
         case types.LOAD_RESOURCE_DATA_SUCCESS:
             const categories = {};
             for (let data of action.resource) {
-                let category = data.categoryautosortscript.split(',');
-                category.forEach(cat => categories[cat] = cat.trim());
+                let category = data.categoryAutoSortScript.split(',');
+                category.forEach((cat: any) => categories[cat] = cat.trim());
             }
             const categoryList = [...(new Set(Object.values(categories)))];
             let index = categoryList.indexOf("");
@@ -43,7 +43,7 @@ export function categories(state = initialState.categories, action) {
     }
 }
 
-export function filteredResource(state = initialState.filteredResource, action) {
+export function filteredResource(state = initialState.filteredResource, action: any) {
     switch (action.type) {
         case types.LOAD_RESOURCE_DATA_SUCCESS:
             return Object.assign([], state, action.resource);
@@ -54,7 +54,7 @@ export function filteredResource(state = initialState.filteredResource, action) 
     }
 }
 
-export function searchedResource(state = initialState.searchedResource, action) {
+export function searchedResource(state = initialState.searchedResource, action: any) {
     switch (action.type) {
         case types.LOAD_RESOURCE_DATA_SUCCESS:
             return Object.assign([], state, action.resource);
@@ -65,7 +65,7 @@ export function searchedResource(state = initialState.searchedResource, action) 
     }
 }
 
-export function savedResource(state = initialState.savedResource, action) {
+export function savedResource(state = initialState.savedResource, action: any) {
     switch (action.type) {
         case types.LOAD_RESOURCE_DATA_SUCCESS:
             const query = qs.parse(window.location.search.replace('?', ''));
@@ -74,9 +74,9 @@ export function savedResource(state = initialState.savedResource, action) {
                 selectedResourceIds = query.resources.split(',');
             }
 
-            const selectedResources = [];
+            const selectedResources: any[] = [];
             selectedResourceIds.forEach(selectedResourceId => {
-                action.resource.forEach(resource => {
+                action.resource.forEach((resource: { id: string }) => {
                     if (resource.id === selectedResourceId) {
                     selectedResources.push(resource);
                     }
@@ -90,7 +90,7 @@ export function savedResource(state = initialState.savedResource, action) {
                 Object.assign([], state, action.savedResource)
             ];
         case types.REMOVE_SAVED_RESOURCE:
-            return state.filter(resource => action.savedResourceIndex !== resource.id);
+            return state.filter((resource: { id: number }) => action.savedResourceIndex !== resource.id);
         default:
             return state;
     }

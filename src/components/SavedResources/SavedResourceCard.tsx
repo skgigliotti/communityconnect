@@ -22,7 +22,7 @@ type Props = {
 export const SavedResourceCard: React.FC<Props> = ({ organization }) => {
     const {
         website, 
-        categoryautosortscript,
+        categoryAutoSortScript,
         distance, 
         distanceElement,
         location, 
@@ -51,7 +51,7 @@ export const SavedResourceCard: React.FC<Props> = ({ organization }) => {
                     -
                 </span>
                 <SavedResourceCardSubtitle>
-                    {categoryautosortscript}
+                    {categoryAutoSortScript}
                 </SavedResourceCardSubtitle>
                 {
                     distance &&

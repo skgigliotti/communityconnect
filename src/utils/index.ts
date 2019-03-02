@@ -1,5 +1,7 @@
-import { getDistance } from "./distance";
+import { getDistance, getCloserName, getCloserResource } from "./distance";
 
 export {
-    getDistance
+    getDistance,
+    getCloserName,
+    getCloserResource
 };

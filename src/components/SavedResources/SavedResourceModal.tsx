@@ -18,7 +18,12 @@ const SavedResourceModalFooter = styled("div")`
 
 `;
 
-export const SavedResourceModal = ({ name }) => (
+type Props = {
+    isOpen: boolean;
+    name: string;
+    toggle: () => void;
+}
+export const SavedResourceModal: React.FC<Props> = ({ isOpen, name, toggle }) => (
     <StyledSavedResourceModal>
         <SavedResourceModalHeader>Are you sure?</SavedResourceModalHeader>
         <SavedResourceModalBody>

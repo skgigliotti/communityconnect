@@ -8,9 +8,17 @@ const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${googleMapKey
 const defaultZoom = 12;
 const defaultCenter = { lat: 42.3731, lng: -71.0162 };
 
-class OrganizationMap extends Component {
+type Props = {
+    center: boolean;
+};
 
-    constructor(props) {
+type State = {
+    center: [ (lat: number), (lng: number) ];
+    zoom: any;
+};
+
+class OrganizationMapClass extends Component<Props, State> {
+    constructor(props: Props) {
         super(props);
         this.state = {
             center: this.props.center ? this.props.center : defaultCenter,
@@ -67,7 +75,6 @@ class OrganizationMap extends Component {
         }
     */
     onZoomChanged = ref => {
-
         this.setState({
             zoom: this.mapReference.getZoom()
         })
@@ -115,4 +122,4 @@ function mapStateToProps(state, ownProps) {
         mapResource: resource
     }
 }
-export default connect(mapStateToProps)(OrganizationMap)
+export const OrganizationMap = connect(mapStateToProps)(OrganizationMapClass)

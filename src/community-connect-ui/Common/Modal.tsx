@@ -27,12 +27,13 @@ export class Modal extends React.Component<Props, State> {
     public render() {
         return (
             <StyledModal isOpen={this.state.isOpen}>
-                <h1>Alert</h1>
+                { this.props.children }
+                {/* <h1>Alert</h1>
                 <p>This action will clear all your saved resources. Do you want to proceed?</p>
                 <Footer>
                     <Button onClick={this.props.toggle}>Cancel</Button>{' '}
                     <Button onClick={this.props.confirmationToggle}>Continue</Button>
-                </Footer>
+                </Footer> */}
             </StyledModal>
         )
     }

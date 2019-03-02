@@ -4,19 +4,19 @@ import { bindActionCreators, compose } from 'redux';
 import { withRouter } from 'react-router';
 
 import qs from 'qs-lite';
-import { History } from "community-connect";
+import { History, Resource } from "community-connect";
 import { getDistance } from '../../utils';
 import * as resourceAction from '../../action/resourceDataAction';
 
 import { SavedResourceCard, SavedResourceModal } from "../SavedResources";
-import { CurrentPosition, Organization } from "community-connect";
+import { Coordinates, Organization } from "community-connect";
 
 type Props = {
     organization: Organization;
     savedResource: any;
     actions: any;
     history: History;
-    currentPosition: CurrentPosition;
+    currentPosition: Coordinates;
 };
 
 type State = {
@@ -55,7 +55,7 @@ class SavedResourceClass extends Component<Props, State> {
         const indexOfResource = resources.indexOf(this.props.organization.id);
 
 
-        if (this.props.savedResource.some(resource => resource.id === this.props.organization.id)) {
+        if (this.props.savedResource.some((resource: Resource) => resource.id === this.props.organization.id)) {
             this.props.actions.removeSavedResource(this.props.organization.id);
             resources.splice(indexOfResource, 1);
         }
@@ -67,64 +67,36 @@ class SavedResourceClass extends Component<Props, State> {
     };
 
     render() {
-        const {
-            id,
-            name,
-            categoryautosortscript,
-            overview,
-            location,
-            website,
-            facebookUrl,
-            instagramUrl,
-            twitterUrl,
-            phone
-        } = this.props.organization;
-
-        let distance, distanceElement;
-        if (this.props.currentPosition && this.props.currentPos.coordinates) {
-            distance = getDistance(
-                { coordinates: this.props.organization.coordinates },
-                this.props.currentPos);
-            if (distance) {
-                distanceElement = <p>Distance from your Location: {distance.toPrecision(4)} miles</p>
-            }
+        const { name } = this.props.organization;
+        let distance;
+        if (this.props.currentPosition && this.props.currentPosition.coordinates) {
+            distance = getDistance(this.props.organization.coordinates, this.props.currentPosition);
+            // where does this get used?
+            // if (distance) {
+            //     distanceElement = <p>Distance from your Location: {distance.toPrecision(4)} miles</p>
+            // }
         }
 
         return (
             <>
-                <SavedResourceCard 
-                    id={id} 
-                    website={website}
-                    categoryautosortscript={categoryautosortscript}
-                    distance={distance}
-                    distanceElement={distanceElement}
-                    location={location}
-                    name={name}
-                    overview={overview}
-                    phone={phone}
-                    facebookUrl={facebookUrl}
-                    instagramUrl={instagramUrl}
-                    twitterUrl={twitterUrl}
-                    removeItem={this.removeItem}
-                />
+                <SavedResourceCard organization={this.props.organization} />
                 <SavedResourceModal 
                     isOpen={this.state.modal}
                     name={name}
                     toggle={this.confirmationModalToggle}
-                    onClosed={this.toggle}
                 />
             </>
         );
     }
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state: any, ownProps: any) {
     return {
         savedResource: state.savedResource
     }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: any) {
     return {
         actions: bindActionCreators(resourceAction, dispatch)
     };

@@ -1,60 +1,48 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { CurrentPosition } from "community-connect";
-import { OrganizationCard, SortBar } from "../../../community-connect-ui/Common";
-import { getDistance } from '../../../utils';
-import * as resourceAction from '../../../action/resourceDataAction';
+import { Coordinates } from "community-connect";
+import { OrganizationCard, SortBar } from "../../community-connect-ui/Common";
+import { getCloserName, getCloserResource } from '../../utils';
+import * as resourceAction from '../../action/resourceDataAction';
 
 type Props = {
-    currentPosition: CurrentPosition;
+    currentPosition: Coordinates;
     savedResource: any;
+    actions: any;
+    saveItem: (resource: any) => void;
 }
-export class ResultList extends Component<Props> {
 
+type State = {
+    dataSort: () => void;
+    listRef: any;
+}
+export class ResultList extends Component<Props, State> {
     constructor(props: Props) {
         super(props)
 
         this.state = {
             dataSort: this.sortByAlphabet,
+            listRef: React.createRef()
         }
 
         this.sortByAlphabet = this.sortByAlphabet.bind(this);
         this.sortByDistance = this.sortByDistance.bind(this);
-        this.getCloserName = this.getCloserName.bind(this);
-        this.getCloserResource = this.getCloserResource.bind(this);
-        this.listRef = React.createRef()
     }
 
     scrollToElement = (index: any) => {
-        this.refs[parseInt(index) + 1].getRef()
+        this.refs[parseInt(index) + 1].getRef() 
     }
-
-    getCloserResource = (a: any, b: any) => {
-        if (getDistance({ a, this.props.currentPosition })
-            > getDistance({ b, this.props.currentPosition })) {
-            return 1;
-        }
-
-        return -1;
-    }
-
-    getCloserName = (a: { name: string }, b: { name: string }) => {
-        if (a.name > b.name) return 1
-        else if (a.name < b.name) return -1
-        else return 0
-    }
-
 
     sortByAlphabet = () => {
-        return this.props.savedResource.slice().sort(this.getCloserName);
+        return this.props.savedResource.slice().sort(getCloserName);
     }
 
     sortByDistance = () => {
-        return this.props.savedResource.slice().sort(this.getCloserResource);
+        return this.props.savedResource.slice().sort(getCloserResource);
     }
 
-    handleSortChange = (newSort) => {
+    handleSortChange = (newSort: () => void) => {
         if (this.state.dataSort !== newSort)
             this.setState({
                 // Set the dataSort variable to whichever sort function is chosen
@@ -63,7 +51,7 @@ export class ResultList extends Component<Props> {
     }
 
     cardClick = (id: any) => {
-        this.props.savedResource.findIndex(resource => {
+        this.props.savedResource.findIndex((resource: any) => {
             return resource.id === id;
         })
 
@@ -77,7 +65,7 @@ export class ResultList extends Component<Props> {
     render() {
         const sortOptions = [
             { key: 'Alphabetically', sort: this.sortByAlphabet, disabled: false }
-            , { key: 'Distance', sort: this.sortByDistance, disabled: !this.props.currentPos }
+            , { key: 'Distance', sort: this.sortByDistance, disabled: !this.props.currentPosition }
         ];
 
         // Render will be called every time this.props.data is updated, and every time handleSortChange
@@ -91,33 +79,33 @@ export class ResultList extends Component<Props> {
                     onSortChange={this.handleSortChange}
                     sortOptions={sortOptions}
                 />
-                <React.Fragment ref={this.listRef}>
+                <div ref={this.listRef}>
                     {
-                        sortedData.map((resource, index) =>
+                        sortedData.map((resource: any) =>
                             <OrganizationCard
                                 key={resource.id}
                                 ref={resource.id}
                                 index={resource.id}
                                 cardClick={this.cardClick}
                                 organization={resource}
-                                currentPos={this.props.currentPos}
+                                currentPos={this.props.currentPosition}
                                 saveItem={() => this.props.saveItem(resource)}
                             />
                         )
                     }
-                </React.Fragment>
+                </div>
             </>
         );
 
     }
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state: any, ownProps: any) {
     return {
         savedResource: state.savedResource.length > 0 ? state.savedResource : state.resource
     }
 }
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: any) {
     return {
         actions: bindActionCreators(resourceAction, dispatch),
     };

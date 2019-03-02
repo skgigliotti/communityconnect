@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { connect } from 'react-redux';
 
+import { Coordinates } from "community-connect";
 import { Header } from '../components/Header';
-import MapPage from '../components/MapPage/MapPage';
-import AdminPage from '../components/AdminPage/AdminPage';
+import { MapPage } from '../components/MapPage';
+import { AdminPage } from '../components/AdminPage';
 import { SplitScreenTogglePane } from '../components/SlidingPane/SplitScreenTogglePane';
 import { SavedResourcePanel } from '../components/SavedResources/SavedResourcePanel';
 import Loader from 'react-loader-spinner'
@@ -15,12 +16,7 @@ type Props = {
 
 type State = {
     isSavedResourcePaneOpen: boolean;
-    position: {
-        coordinates: {
-            lat: string;
-            lng: string;
-        }
-    }
+    position: Coordinates; 
 };
 
 class AppContainer extends Component<Props, State> {
@@ -30,8 +26,8 @@ class AppContainer extends Component<Props, State> {
             isSavedResourcePaneOpen: false,
             position: {
                 coordinates: {
-                    lat: "0",
-                    lng: "0"
+                    lat: 0,
+                    lng: 0
                 }
             }
         }

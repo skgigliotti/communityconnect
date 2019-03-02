@@ -4,7 +4,7 @@ import {bindActionCreators, compose} from 'redux';
 import {withRouter} from 'react-router';
 import qs from 'qs-lite';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { History, Organization, CurrentPosition } from "community-connect";
+import { History, Organization, Coordinates } from "community-connect";
 import {getDistance} from '../../utils';
 import * as resourceAction from '../../action/resourceDataAction';
 
@@ -19,7 +19,7 @@ type Props = {
     actions: any;
     saveable: boolean;
     history: History;
-    currentPosition: CurrentPosition;
+    currentPosition: Coordinates;
 };
 
 type State = {
@@ -105,7 +105,7 @@ class OrganizationCardClass extends Component<Props, State> {
     render() {
         const {
             name, 
-            categoryautosortscript, 
+            categoryAutoSortScript, 
             overview, 
             location, 
             website, 
@@ -119,7 +119,7 @@ class OrganizationCardClass extends Component<Props, State> {
         let distance, distanceElement, directionUrl, encodedCoordinates;
         let url = this.validatedUrl(website);
         if (this.props.currentPosition && this.props.organization.coordinates) {
-            distance = getDistance({coordinates: this.props.organization.coordinates}, this.props.currentPosition);
+            distance = getDistance(this.props.organization.coordinates, this.props.currentPosition);
             if (distance) {
                 distanceElement = <p>Distance from your Location: {distance} miles</p>
             }
@@ -139,7 +139,7 @@ class OrganizationCardClass extends Component<Props, State> {
             <Card ref="cardRef" id={this.props.index} onClick={this.cardClick}>
                 <h1>{this.saveButton()}</h1>
                 <h3>{name}</h3>
-                <h3>{categoryautosortscript}</h3>
+                <h3>{categoryAutoSortScript}</h3>
                 {distance && {distanceElement}}
                 {
                     location &&

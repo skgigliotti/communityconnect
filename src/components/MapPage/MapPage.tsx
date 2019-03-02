@@ -1,11 +1,13 @@
 import React from 'react';
+import { ResultList, OrganizationMap } from "../MapPage";
+import { SplitScreenSlidingPane } from '../SlidingPane';
+import { Coordinates } from "community-connect";
 
-import ResultList from './Map/ResultList';
-import OrganizationMap from './Map/OrganizationMap';
-import { SplitScreenSlidingPane } from '../SlidingPane/SplitScreenSlidingPane';
+type Props = {
+    currentPosition: Coordinates;
+}
 
-
-const MapPage = ({ currentPosition }) => (
+export const MapPage: React.FC<Props> = ({ currentPosition }) => (
     <>
         <SplitScreenSlidingPane>
             <ResultList
@@ -20,5 +22,3 @@ const MapPage = ({ currentPosition }) => (
         />
     </>
 )
-
-export default MapPage;

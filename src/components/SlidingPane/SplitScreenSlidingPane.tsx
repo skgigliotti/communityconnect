@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
 import styled from "@emotion/styled";
+import { Button } from "../../community-connect-ui/Common";
 
-const StyledSplitScreenSlidingPane = styled("div")`
+type StyledProps = {
+    display: boolean;
+}
+const StyledSplitScreenSlidingPane = styled("div")<StyledProps>`
     display: ${props => props.display === true ? "block": "none"}
 `;
 
-export class SplitScreenSlidingPane extends Component {
+type State = {
+    isOpen: boolean;
+}
+
+export class SplitScreenSlidingPane extends Component<{}, State> {
     state = {
         isOpen: true,
     }
 
-    toggle = (e) => {
+    toggle = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
 
         this.setState({
@@ -25,8 +33,8 @@ export class SplitScreenSlidingPane extends Component {
 
         return (
             <StyledSplitScreenSlidingPane display={this.state.isOpen}>
-                <button onClick={this.toggle}>☰</button>
-                {this.props.children}
+                <Button onClick={this.toggle}>☰</Button>
+                { this.props.children }
             </StyledSplitScreenSlidingPane>
         );
     }

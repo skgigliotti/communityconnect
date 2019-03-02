@@ -1,8 +1,8 @@
 declare module "community-connect" {
-    type CurrentPosition = {
+    type Coordinates = {
         coordinates: {
-            lat: string;
-            lng: string;
+            lat: number;
+            lng: number;
         }
     }
     type History = {
@@ -14,9 +14,9 @@ declare module "community-connect" {
         }) => void;
     }
     type Organization = {
-        id: number;
+        id: string;
         name: string; 
-        categoryautosortscript: any;
+        categoryAutoSortScript: any;
         overview: any;
         location: any;
         website: string; 
@@ -26,9 +26,22 @@ declare module "community-connect" {
         phone: string; 
         latitude: string; 
         longitude: string;
-        coordinates: string;
+        coordinates: CurrentPosition;
         distance: string;
         distanceElement: string;
         removeItem: () => void;
+    }
+    type Resource = {
+        id: string;
+    }
+    type SortOptions = {
+        e: {
+            target: {
+                value: any;
+            }
+        }
+        key: string;
+        disabled: boolean;
+        map: (a: any, index: number) => void;
     }
 }
