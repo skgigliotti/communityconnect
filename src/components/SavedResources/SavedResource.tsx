@@ -4,13 +4,12 @@ import { bindActionCreators, compose } from 'redux';
 import { withRouter } from 'react-router';
 
 import qs from 'qs-lite';
-import { getDistance } from '../../utils/distance.js';
+import { getDistance } from '../../utils';
 import * as resourceAction from '../../action/resourceDataAction';
 
 import { SavedResourceCard, SavedResourceModal } from "../SavedResources";
 
-class SavedResource extends Component {
-
+class SavedResourceClass extends Component {
     constructor(props) {
         super(props);
 
@@ -118,6 +117,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default compose(
+export const SavedResource = compose(
     connect(mapStateToProps, mapDispatchToProps),
-    withRouter)(SavedResource);
+    withRouter)(SavedResourceClass);

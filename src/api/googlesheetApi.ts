@@ -2,7 +2,7 @@ import Tabletop from 'tabletop';
 
 const revere_key = '1QolGVE4wVWSKdiWeMaprQGVI6MsjuLZXM5XQ6mTtONA';
 
-function normalizeHeaders(element) {
+function normalizeHeaders(element: any) {
   element["name"] = element["name"];
   element["tags"] = String(element["serviceprovided"]).split(", ");
   element["twitterUrl"] = element["twitterurl"];
@@ -29,9 +29,9 @@ export let getAllResources = new Promise(function(resolve, reject){
     simpleSheet: false,
     prettyColumnNames: false,
     postProcess: normalizeHeaders,
-    callback: (data, tabletop) =>{
+    callback: (data: any, tabletop: any) =>{
       let resource = tabletop.sheets("Data").elements;
-      let filteredResource = resource.filter(function (resource) { return resource.truefalsevetting === 'TRUE' });
+      let filteredResource = resource.filter(function (resource: any) { return resource.truefalsevetting === 'TRUE' });
       resolve(filteredResource);
     }
   });

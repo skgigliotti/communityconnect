@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { OrganizationCard, SortBar } from "../../../community-connect-ui/Common";
-import { getDistance } from '../../../utils/distance.js';
+import { getDistance } from '../../../utils';
 import * as resourceAction from '../../../action/resourceDataAction';
 
 export class ResultList extends Component {

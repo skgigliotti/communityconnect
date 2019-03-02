@@ -96,7 +96,7 @@ class AppContainer extends Component<Props, State> {
         );
     }
 }
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state: any, ownProps: any) {
     let { isFetchingResource } = state;
     return {
         isFetchingResource: isFetchingResource

@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import qs from 'qs-lite';
 import { Link, Route } from "react-router-dom";
 import shareIcon from '../../share-symbol.svg';
-import SavedResources from './SavedResourcesContainer';
+import { SavedResourcesContainer } from '../SavedResources';
 import { Button, Card } from "../../community-connect-ui/Common";
 
 /*
@@ -53,7 +53,7 @@ export const SavedResourcePanel = () => (
             <Route exact path='/admin' component={ToShareButton} />
         </SavedResourcePanelHeader>
         <SavedResourcePanelCardBody>
-            <SavedResources />
+            <SavedResourcesContainer />
         </SavedResourcePanelCardBody>
     </Card>
 );

@@ -4,14 +4,24 @@ import {bindActionCreators, compose} from 'redux';
 import {withRouter} from 'react-router';
 import qs from 'qs-lite';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {getDistance} from '../../utils/distance.js';
+import {getDistance} from '../../utils';
 import * as resourceAction from '../../action/resourceDataAction';
-import SaveButton from './SaveButton';
 
-import { Card } from ".";
+import { Card, SaveButton } from "../Common";
 
-class OrganizationCard extends Component {
-    constructor(props) {
+type Props = {
+    cardClick: (id: number) => void;
+    organization: {
+        id: number;
+    }
+};
+
+type State = {
+    saveExist: boolean;
+};
+
+class OrganizationCardClass extends Component<Props, State> {
+    constructor(props: Props) {
         super(props);
         this.state = {
             saveExist: false
@@ -217,7 +227,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default compose(
+export const OrganizationCard =  compose(
     connect(mapStateToProps, mapDispatchToProps),
     withRouter,
-)(OrganizationCard);
+)(OrganizationCardClass);

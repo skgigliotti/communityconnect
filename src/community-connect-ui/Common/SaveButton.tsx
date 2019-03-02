@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class SaveButton extends Component {
+export class SaveButton extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -56,5 +56,3 @@ class SaveButton extends Component {
         );
     }
 }
-
-export default SaveButton;

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import PropTypes from 'prop-types';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import SavedResource from './SavedResource';
+import { SavedResource } from '../SavedResources';
 
 const getItemStyle = (isDragging, draggableStyle) => ({
     // some basic styles to make the items look a bit nicer
@@ -24,8 +24,16 @@ const getListStyle = isDraggingOver => ({
     // width: 250,
 });
 
-class SavedResourcesContainer extends Component {
-    constructor(props) {
+type Props = {
+    data: [];
+};
+
+type State = {
+    data: [];
+}
+
+class SavedResourcesContainerClass extends Component<Props, State> {
+    constructor(props: Props) {
         super(props);
         this.state = {
             data: Object.assign([], this.props.data)
@@ -108,14 +116,10 @@ class SavedResourcesContainer extends Component {
     }
 }
 
-SavedResourcesContainer.propTypes = {
-    data: PropTypes.array.isRequired
-}
-
 function mapStateToProps(state, ownProps) {
     return {
         data: state.savedResource
     }
 }
 
-export default connect(mapStateToProps)(SavedResourcesContainer);
+export const SavedResourcesContainer = connect(mapStateToProps)(SavedResourcesContainerClass);

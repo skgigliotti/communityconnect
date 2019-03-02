@@ -1,29 +1,36 @@
 {
-    "compilerOptions": {
-        "target": "es2017",
-        "module": "commonjs",
-        "outDir": "dist",
-        "jsx": "preserve",
-        "moduleResolution": "node",
-        "removeComments": true,
-        "sourceMap": true,
-        "noUnusedLocals": true,
-        "strict": true,
-        "baseUrl": ".",
-        "typeRoots": [
-            "./node_modules/@types/",
-            "**/types/**/*.d.ts"
-        ],
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "allowJs": true,
-        "lib": [
-            "es2017",
-            "dom"
-        ]
-    },
-    "exclude": [
-        "**/node_modules",
-        "**/__tests__"
-    ]
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "esnext",
+    "outDir": "dist",
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "removeComments": true,
+    "sourceMap": true,
+    "noUnusedLocals": true,
+    "strict": true,
+    "typeRoots": [
+      "./node_modules/@types/",
+      "**/types/**/*.d.ts"
+    ],
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
+  },
+  "exclude": [
+    "**/node_modules",
+    "**/__tests__"
+  ],
+  "include": [
+    "src"
+  ]
 }
