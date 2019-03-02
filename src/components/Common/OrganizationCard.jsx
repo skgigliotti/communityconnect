@@ -8,7 +8,7 @@ import {getDistance} from '../../utils/distance.js';
 import * as resourceAction from '../../action/resourceDataAction';
 import SaveButton from './SaveButton';
 
-import { Card } from "../Common";
+import { Card } from ".";
 
 class OrganizationCard extends Component {
     constructor(props) {

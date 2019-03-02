@@ -1,5 +1,6 @@
+import React from "react";
 import styled from "@emotion/styled";
-import { Button } from "../Common";
+import { Button } from ".";
 
 const StyledModal = styled("div")`
     display: grid;

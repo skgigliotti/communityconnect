@@ -1,8 +1,10 @@
 import React from 'react';
+import styled from "@emotion/styled";
 import qs from 'qs-lite';
 import { Link, Route } from "react-router-dom";
 import shareIcon from '../../share-symbol.svg';
 import SavedResources from './SavedResourcesContainer';
+import { Button, Card } from "../Common";
 
 /*
 const ToHomeButton = () => {
@@ -10,13 +12,6 @@ const ToHomeButton = () => {
         <Button tag={Link} to="/" type="Map">To Home</Button>
     )
 }*/
-
-let buttonStyle = {
-    float: 'right',
-    backgroundColor: 'rgba(0,0,0,.001)',
-    border: 'none',
-    padding: '0'
-};
 
 //Commenting this part for now
 //Duplicate functionality || Gives the same result as toShareButton function
@@ -38,27 +33,27 @@ const ToShareButton = () => {
 
     return (
         <Button
-            style={buttonStyle} tag={Link} type="Map" to={tempUrl} target="_blank">
-            <img className={styles['share-button']} src={shareIcon} alt="" />
+            tag={Link} type="Map" to={tempUrl} target="_blank">
+            <img src={shareIcon} alt="" />
         </Button>
     )
 }
-const SavedResourcePanel = () => {
 
-    return (
-        <div>
-            <Card>
-                <CardHeader>Saved Resources
-                    <span>
-                        <Route exact path='/admin' component={ToShareButton} />
-                    </span>
-                </CardHeader>
-                <CardBody className={styles['shopping-cart-card']}>
-                    <SavedResources />
-                </CardBody>
-            </Card>
-        </div>
-    )
-}
+const SavedResourcePanelHeader = styled("h2")`
 
-export default SavedResourcePanel;
+`;
+
+const SavedResourcePanelCardBody = styled("div")`
+
+`;
+
+export const SavedResourcePanel = () => (
+    <Card>
+        <SavedResourcePanelHeader>Saved Resources
+            <Route exact path='/admin' component={ToShareButton} />
+        </SavedResourcePanelHeader>
+        <SavedResourcePanelCardBody>
+            <SavedResources />
+        </SavedResourcePanelCardBody>
+    </Card>
+);

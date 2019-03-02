@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import Header from '../components/Header/Header';
 import MapPage from '../components/MapPage/MapPage';
 import AdminPage from '../components/AdminPage/AdminPage';
-import { SplitScreenTogglePane } from '../components/SlidingPane/SplitScreenSlidingPane';
-import SavedResourcePanel from '../components/SavedResources/SavedResourcePanel';
+import { SplitScreenTogglePane } from '../components/SlidingPane/SplitScreenTogglePane';
+import { SavedResourcePanel } from '../components/SavedResources/SavedResourcePanel';
 import Loader from 'react-loader-spinner'
 
 

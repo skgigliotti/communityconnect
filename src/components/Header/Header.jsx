@@ -11,7 +11,7 @@ import {
     NavbarBrand, 
     NavbarToggler 
 } from "../Common";
-import { AdminModal } from "./";
+import { AdminModal } from ".";
 
 class Header extends Component {
     constructor(props) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ButtonGroup } from "./ButtonGroup";
 
-class SortBar extends React.Component {
+export class SortBar extends React.Component {
     handleClick = (e) => {
         // Get new sort based on index of sortOption array
         let newSort = this.props.sortOptions[e.target.value].sort;
@@ -25,5 +25,3 @@ class SortBar extends React.Component {
         );
     }
 }
-
-export default SortBar;

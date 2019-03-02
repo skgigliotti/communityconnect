@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import OrganizationCard from '../Common/OrganizationCardCard';
-import SortBar from '../Common/SortBar.js';
+import { OrganizationCard, SortBar } from "../Common";
 import SearchBar from '../Header/SearchBar';
 import { getDistance } from '../../utils/distance.js';
 
