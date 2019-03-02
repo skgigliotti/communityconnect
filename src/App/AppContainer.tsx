@@ -17,8 +17,8 @@ type State = {
     isSavedResourcePaneOpen: boolean;
     position: {
         coordinates: {
-            lat: number;
-            lng: number;
+            lat: string;
+            lng: string;
         }
     }
 };
@@ -30,8 +30,8 @@ class AppContainer extends Component<Props, State> {
             isSavedResourcePaneOpen: false,
             position: {
                 coordinates: {
-                    lat: 0,
-                    lng: 0
+                    lat: "0",
+                    lng: "0"
                 }
             }
         }

@@ -4,41 +4,22 @@ import {bindActionCreators, compose} from 'redux';
 import {withRouter} from 'react-router';
 import qs from 'qs-lite';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { History, Organization, CurrentPosition } from "community-connect";
 import {getDistance} from '../../utils';
 import * as resourceAction from '../../action/resourceDataAction';
+
 
 import { Card, SaveButton } from "../Common";
 
 type Props = {
     index: string;
     cardClick: (id: string) => void;
-    organization: {
-        id: number;
-        name: string; 
-        categoryautosortscript: any;
-        overview: any;
-        location: any;
-        website: string; 
-        facebookUrl: string;
-        instagramUrl: string; 
-        twitterUrl: string;
-        phone: string; 
-        latitude: string; 
-        longitude: string;
-        coordinates: string;
-    }
+    organization: Organization; 
     savedResource: any;
     actions: any;
     saveable: boolean;
-    history: {
-        pathname: string;
-        search: string;
-        push: (params: { 
-            pathname: string; 
-            search: string;
-        }) => void;
-    }
-    currentPosition: string;
+    history: History;
+    currentPosition: CurrentPosition;
 };
 
 type State = {

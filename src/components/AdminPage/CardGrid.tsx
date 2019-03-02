@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { CurrentPosition } from "community-connect";
 import { OrganizationCard, SortBar } from "../../community-connect-ui/Common";
 import SearchBar from '../Header/SearchBar';
 import { getDistance } from '../../utils';
 
 type Props = {
-    currentPosition: string;
+    currentPosition: CurrentPosition;
     resource?: {
         id: string
     }[];

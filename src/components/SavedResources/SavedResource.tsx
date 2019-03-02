@@ -4,13 +4,26 @@ import { bindActionCreators, compose } from 'redux';
 import { withRouter } from 'react-router';
 
 import qs from 'qs-lite';
+import { History } from "community-connect";
 import { getDistance } from '../../utils';
 import * as resourceAction from '../../action/resourceDataAction';
 
 import { SavedResourceCard, SavedResourceModal } from "../SavedResources";
+import { Organization } from "community-connect";
 
-class SavedResourceClass extends Component {
-    constructor(props) {
+type Props = {
+    organization: Organization;
+    savedResource: any;
+    actions: any;
+    history: History;
+};
+
+type State = {
+    modal: boolean;
+};
+
+class SavedResourceClass extends Component<Props, State> {
+    constructor(props: Props) {
         super(props);
 
         this.state = {

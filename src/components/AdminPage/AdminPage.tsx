@@ -1,9 +1,10 @@
 import React from 'react';
+import { CurrentPosition } from "community-connect";
 
 import { CardGrid, CategoryList } from "../AdminPage";
 
 type Props = {
-    currentPosition: string;
+    currentPosition: CurrentPosition
 };
 
 const AdminPage: React.FC<Props> = ({ currentPosition }) => (
