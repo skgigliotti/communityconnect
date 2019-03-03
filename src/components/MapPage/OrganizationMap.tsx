@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Organization} from "community-connect";
+import { Organization, Resource} from "community-connect";
 import { Map } from "../MapPage";
 
 const googleMapKey = 'AIzaSyAwKdrqS2GfCt9b2K1wAopDc9Ga0N1BVUM';
@@ -87,7 +87,7 @@ class OrganizationMapClass extends Component<Props, State> {
 
     }
 
-    mapRef = ref => {
+    mapRef = ( ref: any ) => {
         this.mapReference = ref
     }
 
@@ -96,15 +96,15 @@ class OrganizationMapClass extends Component<Props, State> {
             <Map
                 mapRef={this.mapRef}
                 onZoomChanged={this.onZoomChanged}
-                scrollToElement={this.props.scrollToElement}
-                setOpenMarker={this.setOpenMarker}
+                // scrollToElement={this.props.scrollToElement}
+                // setOpenMarker={this.setOpenMarker}
                 googleMapURL={googleMapURL}
                 containerElement={<div style={{ height: '100%' }} />}
                 mapElement={<div style={{ height: '100%' }} />}
                 loadingElement={<div style={{ height: `100%` }} />}
                 zoom={this.state.zoom}
                 center={this.state.center}
-                resource={this.props.mapResource}
+                // resource={this.props.mapResource}
             />
         );
     }
@@ -113,7 +113,7 @@ class OrganizationMapClass extends Component<Props, State> {
 function mapStateToProps(state: any, ownProps: any) {
     let currentResource = state.savedResource.length > 0 ? state.savedResource : state.resource;
     let locationArray = [];
-    currentResource.forEach(function (resource) {
+    currentResource.forEach(function (resource: Resource) {
         if (!locationArray[resource.hashCoordinates]) {
             locationArray[resource.hashCoordinates] = {
                 coordinates: resource.coordinates,

@@ -20,11 +20,14 @@ export class SortBar extends React.Component<Props> {
                 <ButtonGroup>
                     <select onChange={this.handleClick}>
                         {
-                            this.props.sortOptions.map((sortOption, index) => (
-                                <option key={sortOption.key} value={index} disabled={sortOption.disabled}>
-                                    {sortOption.key}
-                                </option>
-                            ))
+                            this.props.sortOptions.map
+                                ? 
+                                    this.props.sortOptions.map((sortOption, index) => (
+                                        <option key={sortOption.key} value={index} disabled={sortOption.disabled}>
+                                            {sortOption.key}
+                                        </option>
+                                    ))
+                                : null
                         }
                     </select>
                 </ButtonGroup>

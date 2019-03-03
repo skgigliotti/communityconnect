@@ -33,15 +33,18 @@ declare module "community-connect" {
     }
     type Resource = {
         id: string;
+        hashCoordinates?: any;
+        coordinates: Coordinates;
     }
     type SortOptions = {
-        e: {
+        e?: {
             target: {
                 value: any;
             }
         }
-        key: string;
-        disabled: boolean;
-        map: (a: any, index: number) => void;
+        key?: string;
+        disabled?: boolean;
+        map?: (a: any, index: number) => void;
+        sort?: () => void;
     }
 }
