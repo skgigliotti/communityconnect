@@ -248,7 +248,7 @@ function mapDispatchToProps(dispatch: any) {
 }
 
 
-export const OrganizationCard =  compose(
+export default compose(
     connect(mapStateToProps, mapDispatchToProps),
     withRouter,
 )(OrganizationCardClass);

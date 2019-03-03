@@ -1,11 +1,15 @@
 import { breakpoints } from "./breakpoints";
 import { colors } from "./colors";
-import { fonts } from "./fonts";
-import { fontWeights } from "./fontWeights";
+import { fonts, fontWeights, fontSizes } from "./fonts";
+import { radii } from "./radii";
+import { spacing } from "./spacing";
 
 export {
     breakpoints,
     colors,
     fonts,
-    fontWeights
+    fontWeights,
+    fontSizes,
+    radii,
+    spacing
 };

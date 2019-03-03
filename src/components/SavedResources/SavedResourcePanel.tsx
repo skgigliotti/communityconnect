@@ -4,7 +4,7 @@ import qs from 'qs-lite';
 import { Route } from "react-router-dom";
 import shareIcon from '../../share-symbol.svg';
 import { SavedResourcesContainer } from '../SavedResources';
-import { Button, Card } from "../../community-connect-ui/common";
+import { ButtonLink, Card } from "../../community-connect-ui/common";
 
 /*
 const ToHomeButton = () => {
@@ -32,9 +32,9 @@ const ToShareButton = () => {
     }
 
     return (
-        <Button href={tempUrl} target="_blank">
+        <ButtonLink href={tempUrl} target="_blank">
             <img src={shareIcon} alt="" />
-        </Button>
+        </ButtonLink>
     )
 }
 

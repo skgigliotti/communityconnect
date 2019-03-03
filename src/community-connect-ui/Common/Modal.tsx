@@ -6,7 +6,9 @@ type StyledModalProps = {
 };
 
 const StyledModal = styled("div")<StyledModalProps>`
+    display: grid;
     display: ${props => props.isOpen === true ? "grid" : "none"};
+    padding: 10px;
 `;
 
 type Props = {

@@ -1,6 +1,6 @@
 import React from 'react';
 // import { Link } from 'react-router-dom'
-import { Button } from '../../community-connect-ui/common';
+import { ButtonLink } from '../../community-connect-ui/common';
 
 const NotFoundPage = () => (
     <>
@@ -11,7 +11,7 @@ const NotFoundPage = () => (
             Navigate back to the Home Page and try again.
         </p>
         {/* <Button tag={Link} to="/">Go Home</Button> */}
-        <Button href="/">Go Home</Button>
+        <ButtonLink href="/">Go Home</ButtonLink>
     </>
 )
 

@@ -4,7 +4,7 @@ import { ButtonGroup } from "./ButtonGroup";
 
 type Props = {
     onSortChange: (newSort: any) => void;
-    sortOptions: SortOptions;
+    sortOptions: SortOptions[];
 }
 export class SortBar extends React.Component<Props> {
     handleClick = (e: any) => {

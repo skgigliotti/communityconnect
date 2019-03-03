@@ -32,13 +32,14 @@ declare module "community-connect" {
         removeItem: () => void;
     }
     type Resource = {
-        id: string;
+        id?: string;
         hashCoordinates?: any;
         coordinates: Coordinates;
         filter: (Resource) => {
             map: (any) => React.ReactNode;
         };
         showInfo: boolean;
+        name?: string;
     }
     type SortOptions = {
         e?: {
