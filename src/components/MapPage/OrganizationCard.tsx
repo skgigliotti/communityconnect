@@ -9,7 +9,7 @@ import {getDistance} from '../../utils';
 import * as resourceAction from '../../action/resourceDataAction';
 
 
-import { Card, SaveButton } from "../common";
+import { Card, SaveButton } from "../../community-connect-ui/common";
 
 type Props = {
     index: string;
@@ -26,7 +26,7 @@ type State = {
     saveExist: boolean;
 };
 
-class OrganizationCardClass extends Component<Props, State> {
+class OrganizationCard extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
@@ -224,8 +224,11 @@ class OrganizationCardClass extends Component<Props, State> {
                                         onMouseLeave={() => this.changeColor(socialTw)}
                                         aria-label="Twitter Page"
                                     >
-                                        <FontAwesomeIcon icon={['fab', 'twitter']} size='2x'
-                                                        title="Twitter Page"/>
+                                        <FontAwesomeIcon
+                                            icon={['fab', 'twitter']} 
+                                            size='2x'
+                                            title="Twitter Page"
+                                        />
                                     </a>
                             }
                         </>
@@ -251,4 +254,4 @@ function mapDispatchToProps(dispatch: any) {
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
     withRouter,
-)(OrganizationCardClass);
+)(OrganizationCard);

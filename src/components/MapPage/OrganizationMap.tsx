@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Organization, Resource} from "community-connect";
-import { Map } from ".";
+import * as Map from "./Map";
 
 const googleMapKey = 'AIzaSyAwKdrqS2GfCt9b2K1wAopDc9Ga0N1BVUM';
 const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${googleMapKey}&v=3.exp&libraries=geometry,drawing,places`;
@@ -131,4 +131,5 @@ function mapStateToProps(state: any, ownProps: any) {
         mapResource: resource
     }
 }
-export const OrganizationMap = connect(mapStateToProps)(OrganizationMapClass)
+
+export const OrganizationMap = connect(mapStateToProps)(OrganizationMapClass);

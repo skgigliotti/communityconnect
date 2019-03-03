@@ -1,5 +1,6 @@
 import React from 'react';
-import { ResultList, OrganizationMap } from "../MapPage";
+import { ResultList } from "../MapPage";
+import * as OrganizationMap from "./OrganizationMap";
 import { SplitScreenSlidingPane } from '../SlidingPane';
 import { Coordinates } from "community-connect";
 

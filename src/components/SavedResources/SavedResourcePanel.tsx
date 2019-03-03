@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import qs from 'qs-lite';
 import { Route } from "react-router-dom";
 import shareIcon from '../../share-symbol.svg';
-import { SavedResourcesContainer } from '../SavedResources';
+import * as SavedResourcesContainer from './SavedResourcesContainer';
 import { ButtonLink, Card } from "../../community-connect-ui/common";
 
 /*

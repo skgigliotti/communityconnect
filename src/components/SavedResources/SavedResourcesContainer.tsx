@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { Coordinates} from "community-connect";
-import { SavedResource } from '../SavedResources';
+import * as SavedResource from '../SavedResources';
 
 const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({
     // some basic styles to make the items look a bit nicer
@@ -137,4 +137,4 @@ function mapStateToProps(state: any, ownProps: any) {
     }
 }
 
-export const SavedResourcesContainer = connect(mapStateToProps)(SavedResourcesContainerClass);
+export default connect(mapStateToProps)(SavedResourcesContainerClass);

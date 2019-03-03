@@ -8,8 +8,9 @@ type Props = {
     mapRef: any;
     onMarkerClick: () => void;
     resource: Resource;
-}
-export const Map = withScriptjs(withGoogleMap((props: Props) => (
+};
+
+const Map = withScriptjs(withGoogleMap((props: Props) => (
     <GoogleMap
         {...props}
         ref={props.mapRef}
@@ -33,3 +34,5 @@ export const Map = withScriptjs(withGoogleMap((props: Props) => (
         </MarkerClusterer>
     </GoogleMap>
 )));
+
+export default Map;

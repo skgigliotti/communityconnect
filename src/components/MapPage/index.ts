@@ -1,13 +1,11 @@
-import { Map } from "./Map";
 import { MapPage } from "./MapPage";
-import { OrganizationMap } from "./OrganizationMap";
+import OrganizationCard from "./OrganizationCard";
 import { OrganizationMarker } from "./OrganizationMarker";
 import { ResultList } from "./ResultList";
 
 export {
-    Map,
     MapPage,
-    OrganizationMap,
+    OrganizationCard,
     OrganizationMarker,
     ResultList
 }

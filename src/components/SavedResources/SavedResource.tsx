@@ -25,7 +25,7 @@ type State = {
     modal: boolean;
 };
 
-class SavedResourceClass extends Component<Props, State> {
+class SavedResource extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
 
@@ -105,7 +105,6 @@ function mapDispatchToProps(dispatch: any) {
     };
 }
 
-
-export const SavedResource = compose(
+export default compose(
     connect(mapStateToProps, mapDispatchToProps),
-    withRouter)(SavedResourceClass);
+    withRouter)(SavedResource);

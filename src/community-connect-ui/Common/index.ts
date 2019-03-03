@@ -14,9 +14,10 @@ import { Navbar } from "./Navbar";
 import { NavbarBrand } from "./NavbarBrand";
 import { NavItem } from "./NavItem";
 import { NavbarToggler } from "./NavbarToggler";
-import OrganizationCard from "./OrganizationCard";
 import { SaveButton } from "./SaveButton";
 import { SortBar } from "./SortBar";
+
+export * from "../../components/MapPage/OrganizationCard";
 
 export {
     Badge,
@@ -35,7 +36,6 @@ export {
     NavItem,
     NavbarBrand,
     NavbarToggler,
-    OrganizationCard,
     SaveButton,
     SortBar
 };
