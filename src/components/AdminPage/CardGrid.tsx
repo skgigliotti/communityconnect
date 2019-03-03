@@ -74,7 +74,7 @@ export class CardGrid extends Component<Props, State> {
                     sortOptions={sortOptions}
                 />
                 {
-                    sortedData.map((resource) => (
+                    sortedData.map((resource: any) => (
                         <OrganizationCard
                             key={resource.id}
                             index={resource.id}

@@ -1,9 +1,15 @@
 import React from 'react';
 import {withScriptjs, withGoogleMap, GoogleMap} from 'react-google-maps';
 import MarkerClusterer from 'react-google-maps/lib/components/addons/MarkerClusterer';
+import { Resource } from "community-connect";
 import { OrganizationMarker } from '../MapPage';
 
-export const Map = withScriptjs(withGoogleMap(props => (
+type Props = {
+    mapRef: any;
+    onMarkerClick: () => void;
+    resource: Resource;
+}
+export const Map = withScriptjs(withGoogleMap((props: Props) => (
     <GoogleMap
         {...props}
         ref={props.mapRef}
@@ -16,7 +22,7 @@ export const Map = withScriptjs(withGoogleMap(props => (
             defaultMaxZoom={16}
         >
             {
-                props.resource.filter(resource => resource.coordinates).map((resource, index) =>
+                props.resource.filter(( resource: Resource ) => resource.coordinates).map((resource: Resource, index: any) =>
                     <OrganizationMarker
                         key={index}
                         open={resource.showInfo}

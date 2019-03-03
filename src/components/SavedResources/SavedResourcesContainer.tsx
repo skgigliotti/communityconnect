@@ -43,7 +43,7 @@ type Props = {
 };
 
 type State = {
-    data: [];
+    data: any[];
 }
 
 class SavedResourcesContainerClass extends Component<Props, State> {

@@ -1,4 +1,4 @@
-import React, { Component, AnchorHTMLAttributes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Coordinates, Resource, SortOptions } from "community-connect";
@@ -32,9 +32,9 @@ export class ResultList extends Component<Props, State> {
         this.sortByDistance = this.sortByDistance.bind(this);
     }
 
-    scrollToElement = (index: any) => {
-        this.refs[parseInt(index) + 1].getRef()
-    }
+    // scrollToElement = (index: any) => {
+    //     this.refs[parseInt(index) + 1].getRef()
+    // }
 
     sortByAlphabet = () => {
         return this.props.savedResource.slice().sort(getCloserName);

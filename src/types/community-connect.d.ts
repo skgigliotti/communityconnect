@@ -35,6 +35,10 @@ declare module "community-connect" {
         id: string;
         hashCoordinates?: any;
         coordinates: Coordinates;
+        filter: (Resource) => {
+            map: (any) => React.ReactNode;
+        };
+        showInfo: boolean;
     }
     type SortOptions = {
         e?: {

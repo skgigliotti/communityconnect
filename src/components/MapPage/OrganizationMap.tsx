@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Organization, Resource} from "community-connect";
-import { Map } from "../MapPage";
+import { Map } from ".";
 
 const googleMapKey = 'AIzaSyAwKdrqS2GfCt9b2K1wAopDc9Ga0N1BVUM';
 const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${googleMapKey}&v=3.exp&libraries=geometry,drawing,places`;
@@ -18,6 +18,7 @@ type State = {
     center: { lat: number; lng: number; };
     zoom: any;
     hoveredItem: any;
+    mapReference: any;
 };
 
 class OrganizationMapClass extends Component<Props, State> {
@@ -26,10 +27,10 @@ class OrganizationMapClass extends Component<Props, State> {
         this.state = {
             center: this.props.center ? this.props.center : defaultCenter,
             zoom: defaultZoom,
-            hoveredItem: ""
+            hoveredItem: "",
+            mapReference: ""
         }
     }
-
 
     markerHover = (key: any, event: any) => {
         event.map.getCanvas().style.cursor = 'pointer';
@@ -82,13 +83,15 @@ class OrganizationMapClass extends Component<Props, State> {
     // onZoomChanged = ref => {
     onZoomChanged = () => {
         this.setState({
-            zoom: this.mapReference.getZoom()
+            zoom: this.state.mapReference.getZoom()
         })
 
     }
 
     mapRef = ( ref: any ) => {
-        this.mapReference = ref
+        this.setState({
+            mapReference: ref
+        })
     }
 
     render() {
