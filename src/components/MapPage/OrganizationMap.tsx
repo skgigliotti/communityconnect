@@ -115,7 +115,7 @@ class OrganizationMapClass extends Component<Props, State> {
 
 function mapStateToProps(state: any, ownProps: any) {
     let currentResource = state.savedResource.length > 0 ? state.savedResource : state.resource;
-    let locationArray = [];
+    let locationArray: any[] = [];
     currentResource.forEach(function (resource: Resource) {
         if (!locationArray[resource.hashCoordinates]) {
             locationArray[resource.hashCoordinates] = {
