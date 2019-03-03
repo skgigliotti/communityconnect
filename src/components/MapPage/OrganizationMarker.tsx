@@ -49,7 +49,7 @@ export class OrganizationMarker extends Component<Props, State> {
         let { resource } = this.props;
         return (
             <Marker
-                optimize={false}
+                // optimize={false}
                 position={resource.coordinates}
                 onClick={this.scrollToElement}
             >

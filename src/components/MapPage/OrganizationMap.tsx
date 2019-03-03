@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Map from './Map';
+import { Organization} from "community-connect";
+import { Map } from "../MapPage";
 
 const googleMapKey = 'AIzaSyAwKdrqS2GfCt9b2K1wAopDc9Ga0N1BVUM';
 const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${googleMapKey}&v=3.exp&libraries=geometry,drawing,places`;
@@ -9,12 +10,14 @@ const defaultZoom = 12;
 const defaultCenter = { lat: 42.3731, lng: -71.0162 };
 
 type Props = {
-    center: boolean;
+    center: { lat: number; lng: number; };
+    organizations: any;
 };
 
 type State = {
-    center: [ (lat: number), (lng: number) ];
+    center: { lat: number; lng: number; };
     zoom: any;
+    hoveredItem: any;
 };
 
 class OrganizationMapClass extends Component<Props, State> {
@@ -22,31 +25,33 @@ class OrganizationMapClass extends Component<Props, State> {
         super(props);
         this.state = {
             center: this.props.center ? this.props.center : defaultCenter,
-            zoom: defaultZoom
+            zoom: defaultZoom,
+            hoveredItem: ""
         }
     }
 
 
-    markerHover = (key, event) => {
+    markerHover = (key: any, event: any) => {
         event.map.getCanvas().style.cursor = 'pointer';
         this.setState({
             hoveredItem: key
         });
     }
 
-    markerEndHover = (key, event) => {
+    markerEndHover = (key: any, event: any) => {
         event.map.getCanvas().style.cursor = '';
         this.setState({
             hoveredItem: ''
         });
     }
 
-    onOrganizationClick = (key, event) => {
+    onOrganizationClick = (key: any, event: any) => {
         const organizationZoom = 11;
-        const org = this.props.organizations.find(o => o.id === key);
+        const org = this.props.organizations.find((o: Organization) => o.id === key);
 
         this.setState({
-            center: [org.position.longitude, org.position.latitude],
+            // center: [org.position.longitude, org.position.latitude],
+            center: { lat: org.position.longitude, lng: org.position.latitude },
             zoom: [organizationZoom]
         });
     }
@@ -74,7 +79,8 @@ class OrganizationMapClass extends Component<Props, State> {
         this.forceUpdate();
         }
     */
-    onZoomChanged = ref => {
+    // onZoomChanged = ref => {
+    onZoomChanged = () => {
         this.setState({
             zoom: this.mapReference.getZoom()
         })

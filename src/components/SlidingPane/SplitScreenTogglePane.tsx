@@ -13,7 +13,7 @@ type Props = {
     isOpen: boolean;
 }
 
-export const SplitScreenTogglePane = ({ children, isOpen }) => (
+export const SplitScreenTogglePane: React.FC<Props> = ({ children, isOpen }) => (
     <StyledSplitScreenTogglePane isOpen={isOpen}>
         { children }
     </StyledSplitScreenTogglePane>

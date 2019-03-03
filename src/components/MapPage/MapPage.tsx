@@ -11,8 +11,8 @@ export const MapPage: React.FC<Props> = ({ currentPosition }) => (
     <>
         <SplitScreenSlidingPane>
             <ResultList
-                ref={instance => { this.resultListItem = instance }}
-                cardClick={this.cardClick}
+                // ref={instance => { this.resultListItem = instance }}
+                // cardClick={this.cardClick}
                 currentPos={currentPosition}
                 fullWidth={true}
             />

@@ -1,7 +1,7 @@
 import React from 'react';
 import {withScriptjs, withGoogleMap, GoogleMap} from 'react-google-maps';
-import {MarkerClusterer} from 'react-google-maps/lib/components/addons/MarkerClusterer';
-import OrganizationMarker from './OrganizationMarker';
+import MarkerClusterer from 'react-google-maps/lib/components/addons/MarkerClusterer';
+import { OrganizationMarker } from '../MapPage';
 
 export const Map = withScriptjs(withGoogleMap(props => (
     <GoogleMap

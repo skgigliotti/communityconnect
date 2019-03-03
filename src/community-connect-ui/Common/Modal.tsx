@@ -11,7 +11,7 @@ const StyledModal = styled("div")<StyledModalProps>`
 
 type Props = {
     toggle: () => void;
-    onClosed: () => void;
+    onClosed?: () => void;
     confirmationToggle: () => void;
 };
 

@@ -22,16 +22,21 @@ type Props = {
     isOpen: boolean;
     name: string;
     toggle: () => void;
+    removalConfirmed?: () => void;
+    confirmationModalToggle: () => void;
 }
-export const SavedResourceModal: React.FC<Props> = ({ isOpen, name, toggle }) => (
-    <StyledSavedResourceModal>
+export const SavedResourceModal: React.FC<Props> = ({ isOpen, name, toggle, removalConfirmed, confirmationModalToggle }) => (
+    <StyledSavedResourceModal
+        toggle={toggle}
+        confirmationToggle={confirmationModalToggle} 
+    >
         <SavedResourceModalHeader>Are you sure?</SavedResourceModalHeader>
         <SavedResourceModalBody>
             Would you like to remove '{name}'' from your saved resources?
         </SavedResourceModalBody>
         <SavedResourceModalFooter>
-            <Button color="primary" onClick={this.removalConfirmed}>Yes</Button>{' '}
-            <Button color="secondary" onClick={this.confirmationModalToggle}>No</Button>
+            <Button onClick={removalConfirmed}>Yes</Button>{' '}
+            <Button onClick={confirmationModalToggle}>No</Button>
         </SavedResourceModalFooter>
     </StyledSavedResourceModal>
 );

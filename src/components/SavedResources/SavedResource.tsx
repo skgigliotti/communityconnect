@@ -10,13 +10,15 @@ import * as resourceAction from '../../action/resourceDataAction';
 
 import { SavedResourceCard, SavedResourceModal } from "../SavedResources";
 import { Coordinates, Organization } from "community-connect";
+// import { timingSafeEqual } from 'crypto';
 
 type Props = {
     organization: Organization;
-    savedResource: any;
-    actions: any;
+    savedResource?: any;
+    actions?: any;
     history: History;
     currentPosition: Coordinates;
+    removeItem: () => void;
 };
 
 type State = {
@@ -84,6 +86,7 @@ class SavedResourceClass extends Component<Props, State> {
                     isOpen={this.state.modal}
                     name={name}
                     toggle={this.confirmationModalToggle}
+                    confirmationModalToggle={this.confirmationModalToggle}
                 />
             </>
         );

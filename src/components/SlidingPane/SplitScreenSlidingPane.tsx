@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from "@emotion/styled";
-import { Button } from "../../community-connect-ui/common";
 
 type StyledProps = {
     display: boolean;
@@ -33,7 +32,7 @@ export class SplitScreenSlidingPane extends Component<{}, State> {
 
         return (
             <StyledSplitScreenSlidingPane display={this.state.isOpen}>
-                <Button onClick={this.toggle}>☰</Button>
+                <button onClick={this.toggle}>☰</button>
                 { this.props.children }
             </StyledSplitScreenSlidingPane>
         );

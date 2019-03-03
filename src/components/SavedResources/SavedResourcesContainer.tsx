@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { Coordinates} from "community-connect";
 import { SavedResource } from '../SavedResources';
 
-const getItemStyle = (isDragging, draggableStyle) => ({
+const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({
     // some basic styles to make the items look a bit nicer
     userSelect: 'none',
     // padding: grid * 2,
@@ -17,14 +17,29 @@ const getItemStyle = (isDragging, draggableStyle) => ({
     ...draggableStyle,
 });
 
-const getListStyle = isDraggingOver => ({
-    // background: isDraggingOver ? 'lightblue' : 'white',
-    // padding: grid,
-    // width: 250,
-});
+// const getliststyle = isdraggingover: any => ({
+//     background: isdraggingover ? 'lightblue' : 'white',
+//     padding: grid,
+//     width: 250,
+// });
+
+type Result = {
+    destination: {
+        index: number;
+    };
+    source: {
+        index: number;
+    };
+};
+
+type Item = {
+    id: number;
+};
 
 type Props = {
     data: [];
+    currentPosition: Coordinates;
+    removeItem: (item: Item) => void;
 };
 
 type State = {
@@ -44,7 +59,7 @@ class SavedResourcesContainerClass extends Component<Props, State> {
     componentWillReceiveProps(nextProps: Props) {
         this.setState({ data: Object.assign([], nextProps.data) });
     }
-    onDragEnd(result) {
+    onDragEnd(result: Result) {
         // dropped outside the list
         if (!result.destination) {
             return;
@@ -56,7 +71,7 @@ class SavedResourcesContainerClass extends Component<Props, State> {
         );
     }
 
-    orderResources = (sourceIndex, destinationIndex) => {
+    orderResources = (sourceIndex: number, destinationIndex: number) => {
         let newSavedResources = this.props.data.slice();
 
         let movedResource = newSavedResources[sourceIndex];
@@ -77,14 +92,14 @@ class SavedResourcesContainerClass extends Component<Props, State> {
         return (
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <Droppable droppableId="droppable">
-                    {(provided, snapshot) => (
+                    {(provided: any, snapshot: any) => (
                         <div
                             ref={provided.innerRef}
-                            style={getListStyle(snapshot.isDraggingOver)}
+                            // style={getListStyle(snapshot.isDraggingOver)}
                         >
-                            {data.map((item, index) => (
+                            {data.map((item: Item, index) => (
                                 <Draggable key={item.id} draggableId={item.id} index={index}>
-                                    {(provided, snapshot) => (
+                                    {(provided: any, snapshot: any) => (
                                         <div
                                             ref={provided.innerRef}
                                             {...provided.draggableProps}
@@ -98,8 +113,9 @@ class SavedResourcesContainerClass extends Component<Props, State> {
                                                 key={item.id}
                                                 ref={item.id}
                                                 // cardClick={this.props.cardClick}
+                                                history={history} // this needs to be tested
                                                 organization={item}
-                                                currentPos={this.props.currentPos}
+                                                currentPosition={this.props.currentPosition}
                                                 removeItem={() => this.props.removeItem(item)}
                                             />
                                         </div>

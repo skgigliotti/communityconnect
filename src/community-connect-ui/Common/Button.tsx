@@ -1,15 +1,14 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Link } from "react-router-dom";
 
-const StyledButton = styled("button")`
+const StyledButton = styled("a")`
 
 `;
 
 type Props = {
     children: any;
-    onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-    href?: string | Link;
+    onClick?: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+    href?: string;
     target?: any;
 };
 
