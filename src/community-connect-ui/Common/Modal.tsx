@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "@emotion/styled";
+import onClickOutside from "react-onclickoutside";
 
 type StyledModalProps = {
     isOpen: boolean;
 };
 
 const StyledModal = styled("div")<StyledModalProps>`
-    display: grid;
     display: ${props => props.isOpen === true ? "grid" : "none"};
+    position: absolute;
     padding: 10px;
 `;
 
@@ -21,7 +22,15 @@ type State = {
     isOpen: boolean;
 }
 
-export class Modal extends React.Component<Props, State> {
+class ModalComponent extends React.Component<Props, State> {
+    public state = {
+        isOpen: true
+    }
+    public handleClickOutisde = (event: any) => {
+        this.setState({
+            isOpen: false,
+        })
+    }
     public render() {
         return (
             <StyledModal isOpen={this.state.isOpen}>
@@ -36,3 +45,5 @@ export class Modal extends React.Component<Props, State> {
         )
     }
 }
+
+export const Modal = onClickOutside(ModalComponent);
