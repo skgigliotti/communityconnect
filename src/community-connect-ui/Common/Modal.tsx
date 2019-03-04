@@ -23,7 +23,7 @@ type State = {
 }
 
 class ModalComponent extends React.Component<Props, State> {
-    public state = {
+    public state: State = {
         isOpen: true
     }
     public handleClickOutisde = (event: any) => {
