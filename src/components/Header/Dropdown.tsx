@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
-import { DropdownCategory, DropdownItem, DropdownToggle } from "../Header";
+import { DropdownCategory, DropdownItem, DropdownMenu, DropdownToggle } from "../Header";
 
-export class Dropdown extends Component {
-    constructor(props) {
+type Props = {
+    handleEvent: (cat: any, name: string) => void;
+    category: any;
+}
+
+type State = {
+    dropdownOpen: boolean;
+    value: string;
+    activeItem: [];
+}
+export class Dropdown extends Component<Props, State> {
+    constructor(props: Props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
         this.toggle = this.toggle.bind(this);
@@ -20,14 +30,15 @@ export class Dropdown extends Component {
         });
     }
 
-    handleClick(cat, index) {
+    handleClick(cat: any, index: any) {
         this.props.handleEvent(cat, "category");
         if (index === -1) this.setState({
             activeItem: []
         });
-        this.state.activeItem.includes(index) ? this.setState({
-            activeItem: this.state.activeItem.filter(selected => selected !== index)
-        })
+        this.state.activeItem.includes(index) 
+            ? this.setState({
+                activeItem: this.state.activeItem.filter(selected => selected !== index)
+            })
             : this.state.activeItem.push(index);
     }
 
@@ -41,9 +52,9 @@ export class Dropdown extends Component {
         return (
             <DropdownCategory toggle={this.toggle} isOpen={this.state.dropdownOpen} inNavbar>
                 <DropdownToggle nav caret>Category</DropdownToggle>
-                <DropdownMenu right>
+                <DropdownMenu>
                     <DropdownItem onClick={() => this.handleClick("Clear", -1)} key={"Clear"}>Clear</DropdownItem>
-                    <DropdownItem divider />
+                    <DropdownItem />
                     {this.categoryMenuItems()}
                 </DropdownMenu>
             </DropdownCategory>

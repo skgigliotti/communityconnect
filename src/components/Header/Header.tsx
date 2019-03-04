@@ -25,7 +25,7 @@ type State = {
 };
 
 class HeaderClass extends Component<Props, State> {
-    constructor(props) {
+    constructor(props: Props) {
         super(props);
 
         this.toggleNavbar = this.toggleNavbar.bind(this);

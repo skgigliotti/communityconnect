@@ -13,7 +13,7 @@ type StyledButtonLinkProps = {
 const StyledButtonLink = styled("a")<StyledButtonLinkProps>`
     border-radius: ${props => props.borderRadius ? props.borderRadius : radii.md};
     background-color: ${props => props.backgroundColor ? props.backgroundColor : colors.gray};
-    color: ${props => props.color ? props.color : colors.white}
+    color: ${props => props.color ? props.color : colors.white};
     font-size: ${props => props.fontSize ? props.fontSize : fontSizes.link};
     font-family: ${fonts.sansSerif};
 `;
