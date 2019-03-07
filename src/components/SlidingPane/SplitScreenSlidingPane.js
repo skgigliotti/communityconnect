@@ -1,12 +1,21 @@
-import React, { Component } from 'react';
+// @flow
+import * as React from 'react';
+import { Component } from 'react';
 import styles from './SplitScreen.module.css';
 
-export class SplitScreenSlidingPane extends Component {
+type SlidingProps = {
+  children?: React.Node
+}
+
+type SlidingState = {
+  isOpen: boolean
+}
+export class SplitScreenSlidingPane extends Component<SlidingProps, SlidingState> {
   state = {
     isOpen: true,
   }
 
-  toggle = (e) => {
+  toggle = (e: Event) => {
     e.preventDefault();
 
     this.setState({
@@ -30,7 +39,11 @@ export class SplitScreenSlidingPane extends Component {
   }
 }
 
-export class SplitScreenTogglePane extends Component {
+type ToggleProps = {
+  isOpen: boolean,
+  children?: React.Node
+}
+export class SplitScreenTogglePane extends Component<ToggleProps, {}> {
   render() {
     return (
       <div style={{display: this.props.isOpen === true ? 'block' : 'none'}} className={styles.togglePane}>{this.props.children}</div>

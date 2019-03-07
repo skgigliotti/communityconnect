@@ -1,5 +1,13 @@
+// @flow
+type Coordinates = {
+  lat: number,
+  lng: number
+}
+type Location = {
+  coordinates: Coordinates
+}
 
-export const getDistance = (targetLocation, myLocation) => {
+export const getDistance = (targetLocation: Location, myLocation: Location) => {
   // return undefined if we are missing either coordinate
   if(!targetLocation.coordinates || !myLocation.coordinates) {
     return;

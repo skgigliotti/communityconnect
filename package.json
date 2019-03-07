@@ -38,6 +38,9 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.7.2",
+    "babel-cli": "^6.26.0",
+    "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.94.0",
     "react-scripts": "2.0.0-next.66cc7a90",
     "redux-immutable-state-invariant": "^2.1.0"
   },
