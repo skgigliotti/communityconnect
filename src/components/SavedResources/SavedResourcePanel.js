@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import qs from 'qs-lite';
 import { Link, Route } from "react-router-dom";

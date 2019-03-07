@@ -19,31 +19,15 @@ import qs from 'qs-lite';
 import { getDistance } from '../../utils/distance.js';
 import * as resourceAction from '../../action/resourceDataAction';
 
+import type { Coordinates, Organization } from "../../types";
+
 type Props = {
-  organization: {
-    id: string,
-    name: string,
-    categoryautosortscript: any,
-    overview: any,
-    location: any,
-    website: string,
-    facebookUrl: string,
-    instagramUrl: string,
-    twitterUrl: string,
-    phone: string,
-    coordinates: {
-      lat: number,
-      lng: number
-    }
-  },
+  organization: Organization,
   actions: any,
-  savedResource: any,
+  savedResource: Organization,
   history: any,
   currentPos: {
-    coordinates: {
-      lat: number,
-      lng: number
-    }
+    coordinates: Coordinates
   }
 }
 type State = {
@@ -51,7 +35,7 @@ type State = {
 }
 class SavedResource extends Component<Props, State> {
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {

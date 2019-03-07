@@ -1,9 +1,12 @@
+// @flow
 import React from 'react';
 
 import CategoryList from './CategoryList';
 import CardGrid from './CardGrid';
 
-const AdminPage = ({currentPosition}) => {
+import type { Coordinates } from "../../types";
+
+const AdminPage = ({currentPosition} : {currentPosition: Coordinates}) => {
 
     return (
         <div className="container-fluid pb-sm-5">
