@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, compose } from 'redux';
@@ -18,7 +19,37 @@ import qs from 'qs-lite';
 import { getDistance } from '../../utils/distance.js';
 import * as resourceAction from '../../action/resourceDataAction';
 
-class SavedResource extends Component {
+type Props = {
+  organization: {
+    id: string,
+    name: string,
+    categoryautosortscript: any,
+    overview: any,
+    location: any,
+    website: string,
+    facebookUrl: string,
+    instagramUrl: string,
+    twitterUrl: string,
+    phone: string,
+    coordinates: {
+      lat: number,
+      lng: number
+    }
+  },
+  actions: any,
+  savedResource: any,
+  history: any,
+  currentPos: {
+    coordinates: {
+      lat: number,
+      lng: number
+    }
+  }
+}
+type State = {
+  modal: boolean
+}
+class SavedResource extends Component<Props, State> {
 
   constructor(props) {
     super(props);
