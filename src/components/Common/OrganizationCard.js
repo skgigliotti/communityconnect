@@ -80,13 +80,13 @@ class OrganizationCard extends Component {
         return (
             <OrganizationCardWrapper id={this.props.index}>
                 <OrganizationCardHeader>
+                    <OrganizationCardHeaderText>{name}</OrganizationCardHeaderText>
                     {
 
                         this.props.saveable
                             ? <OrganizationCardSaveButton saveItem={this.saveItem} saveExist={this.state.saveExist} />
                             : null
                     }
-                    <OrganizationCardHeaderText>{name}</OrganizationCardHeaderText>
                 </OrganizationCardHeader>
                 <OrganizationCardBody
                     categoryautosortscript={categoryautosortscript}

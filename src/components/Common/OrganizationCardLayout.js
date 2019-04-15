@@ -12,6 +12,8 @@ export const OrganizationCardWrapper = styled("div")`
 `;
 
 export const OrganizationCardHeader = styled("div")`
+    display: grid;
+    grid-template-columns: auto 20px;
     padding: 15px;
     background-color: ${colors.lightgray};
     text-align: center;
@@ -53,4 +55,11 @@ export const OrganizationSocialMediaLinkWrapper = styled("a")`
     &:hover {
         color: ${colors.blue};
     }
+`;
+
+export const OrganizationCardSaveButtonWrapper = styled("span")`
+    cursor: pointer;
+    font-size: 25px;
+    /* line-height: 20px; */
+    border-radius: 50%;
 `;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './OrganizationCard.module.css'
+import { OrganizationCardSaveButtonWrapper } from './OrganizationCardLayout';
 
 export class OrganizationCardSaveButton extends Component {
     constructor(props) {
@@ -9,30 +9,10 @@ export class OrganizationCardSaveButton extends Component {
             animateButtonOutside: [''],
         };
         this.buttonSign = this.buttonSign.bind(this);
-
-        this.cardRef = React.createRef();
     }
 
     handleClick = () => {
         this.props.saveItem();
-        let classes = [
-            styles['cbutton--effect-radomir__after'],
-            styles['cbutton--effect-radomir__cbutton--click__after'],
-            styles['cbutton__after'],
-        ];
-
-        this.setState({
-            animateButtonInside: styles['animate-button-click'],
-            animateButtonOutside: classes,
-        });
-        setTimeout(() => {
-            this.setState({
-                animateButtonInside: '',
-                animateButtonOutside: [''],
-            });
-        },
-            500
-        );
     }
 
     buttonSign() {
@@ -44,28 +24,16 @@ export class OrganizationCardSaveButton extends Component {
 
     render() {
         return (
-            <span onClick={this.handleClick}>
-                <button
-                    className={[
-                        styles['cbutton--effect-radomir'],
-                        styles['cbutton'],
-                    ].join(' ')}
-                >
+            <OrganizationCardSaveButtonWrapper onClick={this.handleClick}>
+                <button>
                     <span
                         title='Add item to Saved Resources'
                         aria-label='Add item to Saved Resources'
-                        className={[
-                            this.state.animateButtonInside,
-                            styles['save-item'],
-                        ].join(' ')}>
+                    >
                         { this.buttonSign() }
                     </span>
-                    <span
-                        className={this.state.animateButtonOutside.join(' ')}
-                    >
-                    </span>
                 </button>
-            </span>
+            </OrganizationCardSaveButtonWrapper>
         );
     }
 }
