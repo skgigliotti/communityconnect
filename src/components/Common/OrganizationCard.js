@@ -172,7 +172,7 @@ const OrganizationCardBody = ({
         }
         {
             phone &&
-            <a href="tel"><FontAwesomeIcon icon='phone' size='1x' /> {phone}</a>
+            <a href={`tel:${phone.replace(/\D/g,'')}`}><FontAwesomeIcon icon='phone' size='1x' /> {phone}</a>
         }
     </OrganizationCardBodyWrapper>
 );

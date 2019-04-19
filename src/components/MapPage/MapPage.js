@@ -2,15 +2,15 @@ import React from 'react';
 
 import ResultList from './ResultList';
 import OrganizationMap from './OrganizationMap';
-import styles from './MapPage.module.css';
 import { SplitScreenSlidingPane } from './SplitScreenSlidingPane';
+import { Container, StaticPane } from "./MapPageLayout";
 
 
 // type Props = {
 //     currentPosition: string;
 // }
 const MapPage = ({ currentPosition }) => (
-    <div id={styles.container}>
+    <Container>
         <SplitScreenSlidingPane>
             <ResultList
                 ref={instance => { this.resultListItem = instance }}
@@ -19,12 +19,10 @@ const MapPage = ({ currentPosition }) => (
                 fullWidth={true}
             />
         </SplitScreenSlidingPane>
-        <div className={styles.staticPane}>
-            <OrganizationMap
-                center={currentPosition ? currentPosition.coordinates : null}
-            />
-        </div>
-    </div>
+        <StaticPane>
+            <OrganizationMap center={currentPosition ? currentPosition.coordinates : null} />
+        </StaticPane>
+    </Container>
 );
 
 export default MapPage;

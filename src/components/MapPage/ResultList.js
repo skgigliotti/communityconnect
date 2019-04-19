@@ -93,7 +93,6 @@ export class ResultList extends Component {
                     ref={this.listRef}>
                     {
                         sortedData.map((resource, index) =>
-
                             <OrganizationCard
                                 key={resource.id}
                                 ref={resource.id}

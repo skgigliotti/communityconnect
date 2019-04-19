@@ -21,7 +21,7 @@ export const NavItem = styled("div")`
 `;
 
 export const SavedResourcesButton = styled("button")`
-    background-color: ${this.props && this.props.hasItems ? "#007ea3" : "#6c757d"};
+    background-color: ${colors.gray};
     color: ${colors.white};
     font-size: ${fontSizes[1]};
     border-radius: ${radii[0]};
@@ -32,11 +32,9 @@ export const SavedResourcesButton = styled("button")`
 `;
 
 export const Badge = styled("span")`
-    margin-left: 2%;
-    border: 1px solid white;
+    border: 1px solid ${colors.white};
     border-radius: ${radii[0]};
     padding: ${spacing[0]};
-    font-weight: 100;
-    background-color: #007ea3;
+    background-color: ${colors.turquoise};
     display: inline;
 `;

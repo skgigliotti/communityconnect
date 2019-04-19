@@ -4,22 +4,18 @@ import { OrganizationCardSaveButtonWrapper } from './OrganizationCardLayout';
 export class OrganizationCardSaveButton extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            saved: false
-        };
         this.getButtonText = this.getButtonText.bind(this);
     }
 
     handleClick = () => {
         this.props.saveItem();
-        this.setState({ saved: true });
     }
 
     getButtonText = () => {
-        if (this.state.saved) {
-            return "Saved"
+        if (this.props.saveExist) {
+            return "Saved";
         }
-        return "Save"
+        return "Save";
     }
 
     render() {
@@ -28,7 +24,7 @@ export class OrganizationCardSaveButton extends Component {
                 onClick={this.handleClick}
                 title='Add item to Saved Resources'
                 aria-label='Add item to Saved Resources'
-                saved={this.state.saved}
+                saved={this.props.saveExist}
             >
                 { this.getButtonText() }
             </OrganizationCardSaveButtonWrapper>

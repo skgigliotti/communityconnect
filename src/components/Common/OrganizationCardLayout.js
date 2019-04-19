@@ -67,4 +67,8 @@ export const OrganizationCardSaveButtonWrapper = styled("button")`
     border-radius: ${radii[0]};
     background-color: ${props => props.saved ? colors.green : colors.turquoise };
     color: ${colors.white};
+    transition: 0.3s;
+    &:hover {
+        box-shadow: 0 4px 8px 0 ${colors.shadowBlack};
+    }
 `;
