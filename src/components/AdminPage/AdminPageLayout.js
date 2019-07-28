@@ -16,6 +16,12 @@ export const CardGridWrapper = styled("div")`
     grid-template-rows: ${spacing[2]} auto;
 `;
 
+export const CardWrapper = styled("div")`
+    grid-column: 2 / 2;
+    position: relative;
+    overflow: auto;
+`;
+
 export const SearchAndSortWrapper = styled("div")`
     display: grid;
     grid-template-columns: auto auto;
@@ -36,4 +42,5 @@ export const CardListWrapper = styled("div")`
     @media screen and (min-width: ${breakPoints[4]}) {
         grid-template-columns: repeat(4, 1fr); 
     }
+    position: absolute;
 `;
