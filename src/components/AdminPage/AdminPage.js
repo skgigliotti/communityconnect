@@ -1,16 +1,21 @@
 import React from 'react';
 
-import { AdminPageWrapper, CardWrapper } from './AdminPageLayout';
+import { AdminPageWrapper, CategoryWrapper } from './AdminPageLayout';
 import CategoryList from './CategoryList';
 import CardGrid from './CardGrid';
 
 const AdminPage = ({currentPosition}) => (
     <AdminPageWrapper>
 
-        <CategoryList />
+
+        <CategoryWrapper>
+            <CategoryList />
+        </CategoryWrapper>
+            
         
-            <CardGrid currentPos={currentPosition} />
         
+        <CardGrid currentPos={currentPosition} />
+    
         
     </AdminPageWrapper>
 )

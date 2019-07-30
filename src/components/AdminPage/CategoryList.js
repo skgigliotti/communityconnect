@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { CategoryWrapper } from './AdminPageLayout';
 import * as resourceAction from '../../action/resourceDataAction';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 
@@ -34,10 +33,12 @@ export class CategoryList extends Component {
   render() {
     return (
       <Form>
+        
         <Label>Filter by Category</Label>
-        <CategoryWrapper>
+        
           {this.categoryMenuItems()}
-        </CategoryWrapper>
+
+        
         
       </Form>
     )

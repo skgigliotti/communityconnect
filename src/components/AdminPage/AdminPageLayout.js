@@ -19,10 +19,11 @@ export const CardGridWrapper = styled("div")`
 export const CardWrapper = styled("div")`
     position: relative;
     overflow: auto;
+    padding: 10px;
 `;
 
 export const CategoryWrapper = styled("div")`
-    grid-column: 1 / 1 ;
+    height: 90%;
     overflow: auto;
 `;
 
@@ -35,7 +36,6 @@ export const SearchAndSortWrapper = styled("div")`
     display: grid;
     grid-template-columns: auto auto;
     justify-content: space-between;
-    padding: 5px;
     position: fixed;
 `;
 
