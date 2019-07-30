@@ -8,9 +8,9 @@ const AdminPage = ({currentPosition}) => (
     <AdminPageWrapper>
 
         <CategoryList />
-        <CardWrapper>
+        
             <CardGrid currentPos={currentPosition} />
-        </CardWrapper>
+        
         
     </AdminPageWrapper>
 )

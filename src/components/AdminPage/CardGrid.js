@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import OrganizationCard from '../Common/OrganizationCard';
 import SortBar from '../Common/SortBar.js';
 import SearchBar from '../Header/SearchBar';
-import { CardGridWrapper, SearchAndSortWrapper, CardListWrapper } from "./AdminPageLayout";
+import { CardGridWrapper, CardWrapper, SearchAndSortWrapper, CardListWrapper, SearchWrapper } from "./AdminPageLayout";
 import { getDistance } from '../../utils/distance.js';
 
 export class CardGrid extends Component {
@@ -61,7 +61,8 @@ export class CardGrid extends Component {
 
     return (
       <CardGridWrapper>
-        <SearchAndSortWrapper>
+        <SearchWrapper>
+          <SearchAndSortWrapper>
           <SearchBar
             type="text"
             handleFilter={this.props.handleFilter}
@@ -71,6 +72,8 @@ export class CardGrid extends Component {
             sortOptions={sortOptions}
           />
         </SearchAndSortWrapper>
+        </SearchWrapper>
+        <CardWrapper>
         <CardListWrapper>
           {
             sortedData.map((resource, index) => (
@@ -85,6 +88,7 @@ export class CardGrid extends Component {
             ))
           }
         </CardListWrapper>
+        </CardWrapper>
       </CardGridWrapper>
     );
   }

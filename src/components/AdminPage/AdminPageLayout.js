@@ -17,15 +17,26 @@ export const CardGridWrapper = styled("div")`
 `;
 
 export const CardWrapper = styled("div")`
-    grid-column: 2 / 2;
     position: relative;
     overflow: auto;
+`;
+
+export const CategoryWrapper = styled("div")`
+    grid-column: 1 / 1 ;
+    overflow: auto;
+`;
+
+export const SearchWrapper = styled("div")`
+    grid-row: 1 / 2;
+    position: relative;
 `;
 
 export const SearchAndSortWrapper = styled("div")`
     display: grid;
     grid-template-columns: auto auto;
     justify-content: space-between;
+    padding: 5px;
+    position: fixed;
 `;
 
 export const CardListWrapper = styled("div")`
@@ -43,4 +54,5 @@ export const CardListWrapper = styled("div")`
         grid-template-columns: repeat(4, 1fr); 
     }
     position: absolute;
+    
 `;
